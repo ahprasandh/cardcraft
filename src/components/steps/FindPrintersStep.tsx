@@ -44,15 +44,37 @@ export default function FindPrintersStep() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900">
-          Find a printer near you
-        </h2>
-        <p className="mt-2 text-gray-500">
-          We found print shops close to you that can bring your card to life
-        </p>
+    <div className="w-full max-w-4xl mx-auto flex-1 min-h-0 flex flex-col">
+      {/* Top: Navigation */}
+      <div className="shrink-0 flex items-center justify-between pb-4 border-b border-gray-100 mb-4">
+        <div>
+          <h2 className="text-sm font-bold text-gray-900">Pick your printer</h2>
+          <p className="text-xs text-gray-500 mt-0.5">Select a nearby shop to print your cards</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setStep("refine")}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium
+              text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+          >
+            <ArrowLeft size={13} /> Back
+          </button>
+          <button
+            onClick={handleProceed}
+            disabled={!selectedPrinter}
+            className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl font-semibold text-xs transition-all ${
+              selectedPrinter
+                ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-200"
+                : "bg-gray-100 text-gray-400 cursor-not-allowed"
+            }`}
+          >
+            Place Order <ArrowRight size={13} />
+          </button>
+        </div>
       </div>
+
+      {/* Bottom: Scrollable content */}
+      <div className="flex-1 min-h-0 overflow-y-auto">
 
       {isSearching ? (
         <div className="flex flex-col items-center justify-center py-20">
@@ -153,32 +175,9 @@ export default function FindPrintersStep() {
             ))}
           </div>
 
-          <div className="flex items-center justify-between mt-8">
-            <button
-              onClick={() => setStep("refine")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 
-                text-gray-600 hover:bg-gray-50 transition-colors text-sm font-medium"
-            >
-              <ArrowLeft size={16} />
-              Back
-            </button>
-
-            {selectedPrinter && (
-              <button
-                onClick={handleProceed}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-xl 
-                  bg-gradient-to-r from-blue-600 to-indigo-600 
-                  text-white font-semibold text-sm
-                  hover:from-blue-700 hover:to-indigo-700
-                  shadow-lg shadow-blue-200 transition-all"
-              >
-                Place Order
-                <ArrowRight size={16} />
-              </button>
-            )}
-          </div>
         </>
       )}
+      </div>
     </div>
   );
 }

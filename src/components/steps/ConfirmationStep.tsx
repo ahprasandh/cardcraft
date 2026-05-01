@@ -8,7 +8,7 @@ export default function ConfirmationStep() {
     useWizardStore();
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto overflow-y-auto">
       <div className="mb-8 text-center">
         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <PartyPopper size={36} className="text-green-600" />

@@ -177,6 +177,7 @@ export function generateColorVariations(base: CardDesign, count: number = 8): Ca
   const templateName = template?.name || base.templateId;
 
   const hueShifts = [30, -30, 60, -60, 120, 180, -90, 150];
+  const paletteNames = ["Warm", "Cool", "Golden", "Ocean", "Complementary", "Inverted", "Berry", "Sunset"];
   const variations: CardDesign[] = [];
 
   for (let i = 0; i < count; i++) {
@@ -196,8 +197,8 @@ export function generateColorVariations(base: CardDesign, count: number = 8): Ca
     variations.push({
       id: `var-${Date.now()}-${i}`,
       templateId: base.templateId,
-      name: `${templateName} · Palette ${i + 1}`,
-      reasoning: `Same layout, different color palette`,
+      name: `${templateName} · ${paletteNames[i % paletteNames.length]}`,
+      reasoning: paletteNames[i % paletteNames.length],
       font: base.font,
       textAlign: base.textAlign || "left",
       spacing: base.spacing || "normal",

@@ -14,7 +14,6 @@ import {
   ArrowUp,
   ArrowDown,
   ArrowRight as ArrowRightIcon,
-  Check,
   MapPin,
   User,
   Briefcase,
@@ -144,7 +143,7 @@ export default function RefinementStep() {
   const changeFontSize = (delta: number) => {
     if (!selectedEl) return;
     const cur = getElStyle(selectedEl);
-    const base = selectedEl === "name" ? 20 : selectedEl === "title" ? 12 : 10;
+    const base = selectedEl === "name" ? 24 : selectedEl === "title" ? 14 : 12;
     const newSize = Math.max(6, Math.min(48, (cur.fontSize ?? base) + delta));
     setElStyle(selectedEl, { fontSize: newSize });
   };
@@ -800,20 +799,12 @@ JSON array:`;
   );
 
   return (
-    <div className="w-full max-w-7xl mx-auto">
-      {/* Header */}
-      <div className="text-center mb-5">
-        <h2 className="text-2xl font-bold text-gray-900">Customize Your Card</h2>
-        <p className="mt-1 text-sm text-gray-500">
-          Click elements on the card to reposition · use arrow keys to fine-tune
-        </p>
-      </div>
-
-      <div className="flex flex-col lg:flex-row gap-6 items-start">
+    <div className="w-full max-w-7xl mx-auto flex-1 min-h-0 flex flex-col">
+      <div className="flex flex-col lg:flex-row gap-4 flex-1 min-h-0">
         {/* ────────────── Left — Card ────────────── */}
-        <div className="flex-1 flex flex-col items-center min-w-0">
+        <div className="flex-1 flex flex-col items-center justify-center min-w-0">
           {/* Action bar */}
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-3">
             <button type="button"
               onClick={() => setShowBack(!showBack)}
               className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
@@ -831,7 +822,7 @@ JSON array:`;
               <button type="button"
                 onClick={() => setShowDownloadMenu(!showDownloadMenu)}
                 disabled={isDownloading}
-                className="flex items-center gap-1.5 px-5 py-2 rounded-xl text-sm font-semibold bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 hover:border-indigo-300 shadow-sm disabled:opacity-50 transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 hover:border-indigo-300 shadow-sm disabled:opacity-50 transition-colors"
               >
                 {isDownloading ? <Loader2 size={14} className="animate-spin" /> : <Download size={14} />}
                 Download
@@ -933,7 +924,7 @@ JSON array:`;
                         <Minus size={10} />
                       </button>
                       <span className="text-xs font-medium text-gray-700 w-8 text-center tabular-nums">
-                        {curStyle.fontSize ?? (selectedEl === "name" ? 20 : selectedEl === "title" ? 12 : 10)}
+                        {curStyle.fontSize ?? (selectedEl === "name" ? 24 : selectedEl === "title" ? 14 : 12)}
                       </span>
                       <button type="button" onClick={() => changeFontSize(1)}
                         className="w-6 h-6 flex items-center justify-center rounded bg-gray-100 hover:bg-indigo-100 text-gray-600 hover:text-indigo-600">
@@ -978,11 +969,30 @@ JSON array:`;
           )}
         </div>
 
-        {/* ────────────── Right — Tabbed Panel ────────────── */}
-        <div className="w-full lg:w-[340px] shrink-0">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        {/* ────────────── Right — Two-Row Panel ────────────── */}
+        <div className="w-full lg:w-[340px] shrink-0 min-h-0 flex flex-col gap-3 overflow-hidden">
+          {/* Top: Navigation */}
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 shrink-0">
+            <h2 className="text-sm font-bold text-gray-900">Happy with your card?</h2>
+            <p className="text-xs text-gray-500 mt-0.5">Download or find a local printer</p>
+            <div className="flex items-center justify-between mt-3">
+              <button type="button" onClick={() => setStep("designs")}
+                className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors">
+                <ArrowLeft size={13} /> Designs
+              </button>
+              <button type="button" onClick={handleConfirm}
+                className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-semibold
+                  bg-gradient-to-r from-green-500 to-emerald-600 text-white
+                  hover:from-green-600 hover:to-emerald-700 shadow-lg shadow-green-200 transition-all">
+                <MapPin size={14} /> Find Printer
+              </button>
+            </div>
+          </div>
+
+          {/* Bottom: Tabbed Controls */}
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col min-h-0 flex-1">
             {/* Tabs */}
-            <div className="flex border-b border-gray-100">
+            <div className="flex border-b border-gray-100 shrink-0">
               {([
                 { id: "details", label: "Details" },
                 { id: "style", label: "Style" },
@@ -998,29 +1008,13 @@ JSON array:`;
             </div>
 
             {/* Tab content */}
-            <div className="p-4 max-h-[520px] overflow-y-auto">
+            <div className="p-4 overflow-y-auto flex-1 min-h-0">
               {activeTab === "details" && renderDetailsTab()}
               {activeTab === "style" && renderStyleTab()}
               {activeTab === "back-face" && renderBackFaceTab()}
             </div>
           </div>
         </div>
-      </div>
-
-      {/* ────────────── Navigation ────────────────────────────────── */}
-      <div className="flex items-center justify-between mt-8">
-        <button onClick={() => setStep("designs")}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200
-            text-gray-600 hover:bg-gray-50 transition-colors text-sm font-medium">
-          <ArrowLeft size={16} /> Back to Designs
-        </button>
-
-        <button onClick={handleConfirm}
-          className="flex items-center gap-2 px-6 py-2.5 rounded-xl
-            bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold text-sm
-            hover:from-green-600 hover:to-emerald-700 shadow-lg shadow-green-200 transition-all">
-          <Check size={16} /> Find Printer <MapPin size={16} />
-        </button>
       </div>
     </div>
   );

@@ -66,17 +66,26 @@ export default function OrderStep() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900">Review & Order</h2>
-        <p className="mt-2 text-gray-500">
-          Almost there! Review your order and place it
-        </p>
+    <div className="w-full max-w-4xl mx-auto flex-1 min-h-0 flex flex-col">
+      {/* Top: Navigation */}
+      <div className="shrink-0 flex items-center justify-between pb-4 border-b border-gray-100 mb-4">
+        <div>
+          <h2 className="text-sm font-bold text-gray-900">Review & Order</h2>
+          <p className="text-xs text-gray-500 mt-0.5">Almost there! Confirm your order details</p>
+        </div>
+        <button
+          onClick={() => setStep("printers")}
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium
+            text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+        >
+          <ArrowLeft size={13} /> Change Printer
+        </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {/* Bottom: Two-column layout */}
+      <div className="flex-1 min-h-0 flex flex-col lg:flex-row gap-8">
         {/* Left: Card preview and printer info */}
-        <div className="space-y-6">
+        <div className="lg:w-1/2 shrink-0 space-y-6">
           <div className="bg-white rounded-2xl border border-gray-100 p-6">
             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
               Your Card
@@ -113,8 +122,8 @@ export default function OrderStep() {
           </div>
         </div>
 
-        {/* Right: Order options */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
+        {/* Right: Order options — scrollable */}
+        <div className="lg:w-1/2 min-h-0 overflow-y-auto bg-white rounded-2xl border border-gray-100 p-6">
           <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
             <Package size={14} className="inline mr-1" />
             Order Options
@@ -246,17 +255,6 @@ export default function OrderStep() {
             </button>
           </div>
         </div>
-      </div>
-
-      <div className="mt-6">
-        <button
-          onClick={() => setStep("printers")}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 
-            text-gray-600 hover:bg-gray-50 transition-colors text-sm font-medium"
-        >
-          <ArrowLeft size={16} />
-          Change Printer
-        </button>
       </div>
     </div>
   );

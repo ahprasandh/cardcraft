@@ -94,8 +94,9 @@ export default function CardInfoStep() {
   };
 
   const handleGenerateApp4 = async () => {
+    // Navigate immediately — DesignPickerStep will show skeletons
     setIsLoading(true);
-    setIsGeneratingApp4(true);
+    setStep("designs");
 
     try {
       const data = await recommendDesignsApp4(
@@ -112,12 +113,10 @@ export default function CardInfoStep() {
     }
 
     setIsLoading(false);
-    setIsGeneratingApp4(false);
-    setStep("designs");
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto overflow-y-auto">
       {/* Hero header */}
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-indigo-50 text-indigo-600 rounded-full text-sm font-medium mb-4">

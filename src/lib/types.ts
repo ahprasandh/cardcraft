@@ -45,14 +45,6 @@ export type TemplateId =
   | "floating-name"
   | "compact-modern"
   | "asymmetric-blocks"
-  // Legacy (7 kept for backward compat, rendered via default fallback)
-  | "card-border"
-  | "logo-centered"
-  | "horizontal-rule"
-  | "sidebar-dark"
-  | "wide-header"
-  | "luxury-frame"
-  | "playful-angle"
   // New (22)
   | "right-sidebar"
   | "bottom-bar"

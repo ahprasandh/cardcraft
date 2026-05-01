@@ -526,21 +526,6 @@ export default function BusinessCard({ design: rawDesign, info, size = "medium",
           </div>
         );
 
-      case "card-border":
-        return (
-          <div className={`w-full h-full ${szPad} flex flex-col items-center justify-center text-center`} style={{ backgroundColor: c.background }}>
-            <div className="absolute inset-2 rounded border" style={{ borderColor: c.accent + "66" }} />
-            <div className={`${sz.name} font-semibold relative z-10`} {...elProps("name", { ...fso.name, color: c.primary  })}>{displayName}</div>
-            <div className={`${sz.title} mt-0.5 relative z-10`} {...elProps("title", { ...fso.title, color: c.secondary  })}>{displayTitle}</div>
-            <div className={`${sz.detail} font-medium mt-0.5 relative z-10`} {...elProps("company", { ...fso.detail, color: c.text  })}>{displayCompany}</div>
-            {showTagline && info.tagline && <div className={`${sz.detail} italic mt-0.5 relative z-10`} {...elProps("tagline", { ...fso.detail, color: c.text  })}>{info.tagline}</div>}
-            <div className="w-8 h-[1px] my-1.5 relative z-10" style={{ backgroundColor: c.accent }} />
-            <div className={`${sz.gap} flex flex-col items-center relative z-10`}>
-              {contactItems.map((ci, i) => <div key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</div>)}
-            </div>
-          </div>
-        );
-
       case "bottom-heavy":
         return (
           <div className={`w-full h-full ${szPad} flex flex-col justify-between`} style={{ backgroundColor: c.background }}>
@@ -550,56 +535,6 @@ export default function BusinessCard({ design: rawDesign, info, size = "medium",
               <div className={`${sz.title} mt-0.5`} {...elProps("title", { ...fso.title, color: c.secondary  })}>{displayTitle}</div>
               {showTagline && info.tagline && <div className={`${sz.detail} italic mt-0.5`} {...elProps("tagline", { ...fso.detail, color: c.text  })}>{info.tagline}</div>}
               <div className="w-10 h-[1px] my-1.5" style={{ backgroundColor: c.accent }} />
-              <div className={`${sz.gap} flex flex-col`}>
-                {contactItems.map((ci, i) => <div key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</div>)}
-              </div>
-            </div>
-          </div>
-        );
-
-      case "logo-centered":
-        return (
-          <div className={`w-full h-full ${szPad} flex flex-col items-center justify-center text-center`} style={{ backgroundColor: c.background }}>
-            <div className={`${sz.detail} tracking-[0.2em] uppercase font-medium`} {...elProps("company", { ...fso.detail, color: c.secondary  })}>{displayCompany}</div>
-            <div className={`${sz.name} font-semibold mt-1.5`} {...elProps("name", { ...fso.name, color: c.primary  })}>{displayName}</div>
-            <div className={`${sz.title} mt-0.5`} {...elProps("title", { ...fso.title, color: c.secondary  })}>{displayTitle}</div>
-            {showTagline && info.tagline && <div className={`${sz.detail} italic mt-0.5`} {...elProps("tagline", { ...fso.detail, color: c.text  })}>{info.tagline}</div>}
-            <div className={`mt-2 flex flex-wrap gap-x-3 justify-center ${sz.gap}`}>
-              {contactItems.map((ci, i) => <span key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</span>)}
-            </div>
-          </div>
-        );
-
-      case "horizontal-rule":
-        return (
-          <div className={`w-full h-full ${szPad} flex flex-col justify-center`} style={{ backgroundColor: c.background }}>
-            <div>
-              <div className={`${sz.name} font-semibold`} {...elProps("name", { ...fso.name, color: c.primary  })}>{displayName}</div>
-              <div className={`${sz.title}`} {...elProps("title", { ...fso.title, color: c.secondary  })}>{displayTitle} · {displayCompany}</div>
-            </div>
-            {showTagline && info.tagline && <div className={`${sz.detail} italic mt-0.5`} {...elProps("tagline", { ...fso.detail, color: c.text  })}>{info.tagline}</div>}
-            <div className="w-full h-[1px] my-2" style={{ backgroundColor: c.accent }} />
-            <div className="flex justify-between">
-              <div className={`${sz.gap} flex flex-col`}>
-                {contactItems.slice(0, 2).map((ci, i) => <div key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</div>)}
-              </div>
-              <div className={`${sz.gap} flex flex-col text-right`}>
-                {contactItems.slice(2).map((ci, i) => <div key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</div>)}
-              </div>
-            </div>
-          </div>
-        );
-
-      case "sidebar-dark":
-        return (
-          <div className="w-full h-full flex">
-            <div className="w-[18%] h-full" style={{ backgroundColor: c.backgroundAlt }} />
-            <div className={`flex-1 ${szPad} flex flex-col justify-center`} style={{ backgroundColor: c.background }}>
-              <div className={`${sz.name} font-semibold`} {...elProps("name", { ...fso.name, color: c.primary  })}>{displayName}</div>
-              <div className={`${sz.title} mt-0.5`} {...elProps("title", { ...fso.title, color: c.secondary  })}>{displayTitle}</div>
-              <div className={`${sz.detail} font-medium mt-0.5`} {...elProps("company", { ...fso.detail, color: c.text  })}>{displayCompany}</div>
-              {showTagline && info.tagline && <div className={`${sz.detail} italic mt-0.5`} {...elProps("tagline", { ...fso.detail, color: c.text  })}>{info.tagline}</div>}
-              <div className="w-6 h-[1px] my-1.5" style={{ backgroundColor: c.accent }} />
               <div className={`${sz.gap} flex flex-col`}>
                 {contactItems.map((ci, i) => <div key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</div>)}
               </div>
@@ -657,54 +592,6 @@ export default function BusinessCard({ design: rawDesign, info, size = "medium",
               {contactItems.map((ci, i) => <div key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</div>)}
             </div>
             {showTagline && info.tagline && <div className={`${sz.detail} italic mt-1.5`} {...elProps("tagline", { ...fso.detail, color: c.secondary  })}>{info.tagline}</div>}
-          </div>
-        );
-
-      case "wide-header":
-        return (
-          <div className="w-full h-full flex flex-col" style={{ backgroundColor: c.background }}>
-            <div className={`${szPad} pb-2`} style={{ backgroundColor: c.accent }}>
-              <div className={`${sz.name} font-bold`} {...elProps("name", { ...fso.name, color: onAccent  })}>{displayName}</div>
-            </div>
-            <div className={`flex-1 ${szPad} pt-2 flex flex-col justify-center`}>
-              <div className={`${sz.title} font-medium`} {...elProps("title", { ...fso.title, color: c.secondary  })}>{displayTitle} · {displayCompany}</div>
-              {showTagline && info.tagline && <div className={`${sz.detail} italic mt-0.5`} {...elProps("tagline", { ...fso.detail, color: c.text  })}>{info.tagline}</div>}
-              <div className={`mt-2 ${sz.gap} flex flex-col`}>
-                {contactItems.map((ci, i) => <div key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</div>)}
-              </div>
-            </div>
-          </div>
-        );
-
-      case "luxury-frame":
-        return (
-          <div className={`w-full h-full ${szPad} flex flex-col items-center justify-center text-center`} style={{ backgroundColor: c.background }}>
-            <div className="absolute inset-2.5 rounded border" style={{ borderColor: c.accent + "44" }} />
-            <div className="absolute inset-3.5 rounded border" style={{ borderColor: c.accent + "22" }} />
-            <div className={`${sz.name} font-light tracking-wider relative z-10`} {...elProps("name", { ...fso.name, color: c.primary  })}>{displayName}</div>
-            <div className={`${sz.detail} tracking-[0.2em] uppercase mt-0.5 relative z-10`} {...elProps("title", { ...fso.detail, color: c.secondary })}>{displayTitle}</div>
-            <div className={`${sz.detail} font-medium mt-0.5 relative z-10`} {...elProps("company", { ...fso.detail, color: c.text  })}>{displayCompany}</div>
-            {showTagline && info.tagline && <div className={`${sz.detail} italic mt-0.5 relative z-10`} {...elProps("tagline", { ...fso.detail, color: c.text  })}>{info.tagline}</div>}
-            <div className="flex gap-1 my-1.5 relative z-10">
-              {[0, 1, 2].map((i) => <div key={i} className="w-1 h-1 rounded-full" style={{ backgroundColor: c.accent }} />)}
-            </div>
-            <div className={`${sz.gap} flex flex-col items-center relative z-10`}>
-              {contactItems.map((ci, i) => <div key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</div>)}
-            </div>
-          </div>
-        );
-
-      case "playful-angle":
-        return (
-          <div className={`w-full h-full ${szPad} flex flex-col justify-center relative`} style={{ backgroundColor: c.background }}>
-            <div className="absolute bottom-0 right-0 w-[45%] h-[55%]" style={{ backgroundColor: c.accent, opacity: 0.08, clipPath: "polygon(100% 0%, 0% 100%, 100% 100%)" }} />
-            <div className={`${sz.detail} font-bold uppercase tracking-wider mb-2`} {...elProps("company", { ...fso.detail, color: c.accent  })}>{displayCompany}</div>
-            <div className={`${sz.name} font-bold relative z-10`} {...elProps("name", { ...fso.name, color: c.primary  })}>{displayName}</div>
-            <div className={`${sz.title} mt-0.5 relative z-10`} {...elProps("title", { ...fso.title, color: c.secondary  })}>{displayTitle}</div>
-            {showTagline && info.tagline && <div className={`${sz.detail} italic mt-0.5 relative z-10`} {...elProps("tagline", { ...fso.detail, color: c.text  })}>{info.tagline}</div>}
-            <div className={`mt-auto ${sz.gap} flex flex-col relative z-10`}>
-              {contactItems.map((ci, i) => <div key={i} className={sz.detail} {...elProps(ci.eid, { ...fso.detail, color: c.text  })}>{ci.text}</div>)}
-            </div>
           </div>
         );
 
