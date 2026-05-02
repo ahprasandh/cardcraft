@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" role="img" aria-label="CardCraft">
+  <!-- Mark: open-card "C" with accent rectangle, scaled up from the favicon -->
+  <g transform="translate(40, 50)">
+    <path d="M84 18H30C20.1 18 12 26.1 12 36v36c0 9.9 8.1 18 18 18h54"
+          stroke="#9fe870" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <rect x="66" y="30" width="36" height="48" rx="6" fill="#0e0f0c" opacity="0.6"/>
+  </g>
+
+  <!-- Wordmark: Card (near-black) + Craft (accent green) -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" letter-spacing="-2">
+    <text x="170" y="115" font-size="84" fill="#0e0f0c">Card</text>
+    <text x="356" y="115" font-size="84" fill="#9fe870">Craft</text>
+  </g>
+
+  <!-- Tagline -->
+  <text x="172" y="150" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="20" fill="#454745" letter-spacing="0.5">
+    A business card studio that thinks for you.
+  </text>
+</svg>
