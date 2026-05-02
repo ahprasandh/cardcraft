@@ -1,0 +1,90 @@
+{
+  "id": "top-heavy",
+  "name": "Top Heavy",
+  "description": "Oversized name dominates the top two-thirds. Contact details in a quiet row at the bottom.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "name",
+      "type": "text",
+      "x": 24,
+      "y": 24,
+      "source": "cardInfo.name",
+      "fontSize": 28,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.5,
+      "color": "palette.primary",
+      "splitWordsToLines": true
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 24,
+      "y": 110,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 24,
+      "y": 126,
+      "source": "cardInfo.company",
+      "fontSize": "body",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "bottom-rule",
+      "type": "shape",
+      "shape": "line",
+      "x": 24,
+      "y": 152,
+      "x2": 326,
+      "y2": 152,
+      "stroke": "palette.accent",
+      "strokeWidth": 0.5
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 24,
+      "y": 162,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 160,
+      "y": 162,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 260,
+      "y": 162,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right",
+      "hideIfEmpty": true
+    }
+  ]
+}

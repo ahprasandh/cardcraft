@@ -1,0 +1,19 @@
+{
+  "id": "wave-divide",
+  "name": "Wave Divide",
+  "description": "A wavy curved divide separates the dark top half from the light bottom half — soft, organic.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "top-half",  "type": "shape", "shape": "rect", "x": 0, "y": 0, "width": 350, "height": 85, "fill": "palette.backgroundAlt" },
+    { "id": "wave",      "type": "shape", "shape": "path", "x": 0, "y": 70, "d": "M0,15 Q87.5,0 175,15 T350,15 L350,30 L0,30 Z", "fill": "palette.background" },
+    { "id": "name",      "type": "text", "x": 20, "y": 18,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "bold",     "fontFamily": "design.font", "color": "palette.onAlt" },
+    { "id": "title",     "type": "text", "x": 20, "y": 40,  "source": "cardInfo.title",   "fontSize": "body",                              "fontFamily": "design.font", "color": "palette.accent" },
+    { "id": "company",   "type": "text", "x": 20, "y": 56,  "source": "cardInfo.company", "fontSize": "body",    "fontWeight": "medium",   "fontFamily": "design.font", "color": "palette.onAlt" },
+    { "id": "tagline",   "type": "text", "x": 20, "y": 110, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic",   "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
+    { "id": "email",     "type": "text", "x": 20, "y": 128, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "phone",     "type": "text", "x": 20, "y": 140, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "website",   "type": "text", "x": 20, "y": 152, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
+    { "id": "address",   "type": "text", "x": 20, "y": 164, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true }
+  ]
+}

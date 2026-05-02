@@ -1,0 +1,19 @@
+{
+  "id": "split-sidebar",
+  "name": "Split Sidebar",
+  "description": "Colored sidebar on the left holding the name and title, white area on the right with company and contacts.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "sidebar",  "type": "shape", "shape": "rect", "x": 0, "y": 0, "width": 122.5, "height": 200, "fill": "palette.backgroundAlt" },
+    { "id": "name",     "type": "text",  "x": 61.25, "y": 74,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "bold", "fontFamily": "design.font", "color": "palette.onAlt", "alignment": "center", "splitWordsToLines": true },
+    { "id": "title",    "type": "text",  "x": 61.25, "y": 116, "source": "cardInfo.title",   "fontSize": "caption",                       "fontFamily": "design.font", "color": "palette.onAlt", "alignment": "center", "opacity": 0.8 },
+    { "id": "company",  "type": "text",  "x": 142.5, "y": 66,  "source": "cardInfo.company", "fontSize": "body",    "fontWeight": "semibold", "fontFamily": "design.font", "color": "palette.primary" },
+    { "id": "tagline",  "type": "text",  "x": 142.5, "y": 82,  "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic",  "fontFamily": "design.font", "color": "palette.secondary", "hideIfEmpty": true },
+    { "id": "divider",  "type": "shape", "shape": "rect", "x": 142.5, "y": 96, "width": 24, "height": 1, "fill": "palette.accent" },
+    { "id": "email",    "type": "text",  "x": 142.5, "y": 101, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "phone",    "type": "text",  "x": 142.5, "y": 113, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "website",  "type": "text",  "x": 142.5, "y": 125, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
+    { "id": "address",  "type": "text",  "x": 142.5, "y": 137, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true }
+  ]
+}

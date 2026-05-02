@@ -1,7 +1,7 @@
 
 import { useWizardStore } from "@/lib/store";
 import BusinessCard from "@/components/BusinessCard";
-import { PartyPopper, RotateCcw } from "lucide-react";
+import { Check, RotateCcw } from "lucide-react";
 
 export default function ConfirmationStep() {
   const { selectedDesign, selectedPrinter, cardInfo, orderDetails, reset } =
@@ -10,20 +10,20 @@ export default function ConfirmationStep() {
   return (
     <div className="w-full max-w-2xl mx-auto overflow-y-auto">
       <div className="mb-8 text-center">
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <PartyPopper size={36} className="text-green-600" />
+        <div className="w-20 h-20 bg-[#9fe870] rounded-full flex items-center justify-center mx-auto mb-4">
+          <Check size={36} className="text-[#163300]" strokeWidth={3} />
         </div>
-        <h2 className="text-3xl font-bold text-gray-900">
-          Order Placed!
+        <h2 className="text-3xl font-bold text-[#0e0f0c]">
+          Your order details are ready
         </h2>
-        <p className="mt-2 text-gray-500">
-          Your business cards are on their way. Here&apos;s your order summary.
+        <p className="mt-2 text-[#454745]">
+          Take these files to your printer, or download them for later.
         </p>
       </div>
 
-      {/* Card preview — same as Order page */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-8">
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+      {/* Card preview */}
+      <div className="bg-white rounded-2xl border border-[#0e0f0c]/12 p-6 mb-8">
+        <h3 className="text-xs font-semibold text-[#454745] uppercase tracking-wider mb-4">
           Your Card
         </h3>
         <div className="flex justify-center">
@@ -38,44 +38,44 @@ export default function ConfirmationStep() {
       </div>
 
       {/* Order summary */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 text-left mb-8">
+      <div className="bg-white rounded-2xl border border-[#0e0f0c]/12 p-6 text-left mb-8">
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
-            <span className="text-gray-400">Quantity</span>
-            <p className="font-semibold text-gray-900">
+            <span className="text-[#868685]">Quantity</span>
+            <p className="font-semibold text-[#0e0f0c]">
               {orderDetails.quantity} cards
             </p>
           </div>
           <div>
-            <span className="text-gray-400">Paper</span>
-            <p className="font-semibold text-gray-900 capitalize">
+            <span className="text-[#868685]">Paper</span>
+            <p className="font-semibold text-[#0e0f0c] capitalize">
               {orderDetails.paperStock}
             </p>
           </div>
           <div>
-            <span className="text-gray-400">Finish</span>
-            <p className="font-semibold text-gray-900 capitalize">
+            <span className="text-[#868685]">Finish</span>
+            <p className="font-semibold text-[#0e0f0c] capitalize">
               {orderDetails.finish}
             </p>
           </div>
           <div>
-            <span className="text-gray-400">Total</span>
-            <p className="font-semibold text-green-600 text-lg">
+            <span className="text-[#868685]">Estimated Total</span>
+            <p className="font-semibold text-[#0e0f0c] text-lg">
               ${orderDetails.estimatedPrice}
             </p>
           </div>
           <div className="col-span-2">
-            <span className="text-gray-400">Printing at</span>
-            <p className="font-semibold text-gray-900">
+            <span className="text-[#868685]">Suggested printer</span>
+            <p className="font-semibold text-[#0e0f0c]">
               {selectedPrinter?.name}
             </p>
-            <p className="text-gray-500 text-xs">
+            <p className="text-[#454745] text-xs">
               {selectedPrinter?.address} &middot; {selectedPrinter?.distance}
             </p>
           </div>
           <div className="col-span-2">
-            <span className="text-gray-400">Estimated Delivery</span>
-            <p className="font-semibold text-gray-900">
+            <span className="text-[#868685]">Typical turnaround</span>
+            <p className="font-semibold text-[#0e0f0c]">
               {orderDetails.estimatedDelivery}
             </p>
           </div>
@@ -85,11 +85,10 @@ export default function ConfirmationStep() {
       <div className="flex items-center justify-center gap-4">
         <button
           onClick={reset}
-          className="flex items-center gap-2 px-6 py-2.5 rounded-xl border border-gray-200 
-            text-gray-600 hover:bg-gray-50 transition-colors text-sm font-medium"
+          className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0e0f0c]/8 text-[#0e0f0c] hover:bg-[#0e0f0c]/12 transition-colors text-sm font-semibold"
         >
           <RotateCcw size={16} />
-          Design Another Card
+          Design another card
         </button>
       </div>
     </div>

@@ -22,7 +22,7 @@ interface WizardState {
   setStep: (step: WizardStep) => void;
   setCardInfo: (info: Partial<CardInfo>) => void;
   setDesigns: (designs: CardDesign[]) => void;
-  setSelectedDesign: (design: CardDesign) => void;
+  setSelectedDesign: (design: CardDesign | ((prev: CardDesign | null) => CardDesign | null)) => void;
   setRefinedDesigns: (designs: CardDesign[]) => void;
   setPrinters: (printers: Printer[]) => void;
   setSelectedPrinter: (printer: Printer) => void;
@@ -70,7 +70,9 @@ export const useWizardStore = create<WizardState>((set) => ({
   setCardInfo: (info) =>
     set((state) => ({ cardInfo: { ...state.cardInfo, ...info } })),
   setDesigns: (designs) => set({ designs }),
-  setSelectedDesign: (design) => set({ selectedDesign: design }),
+  setSelectedDesign: (design) => set((state) => ({
+    selectedDesign: typeof design === "function" ? design(state.selectedDesign) : design,
+  })),
   setRefinedDesigns: (designs) => set({ refinedDesigns: designs }),
   setPrinters: (printers) => set({ printers }),
   setSelectedPrinter: (printer) => set({ selectedPrinter: printer }),

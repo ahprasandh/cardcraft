@@ -1,0 +1,19 @@
+{
+  "id": "glyph-mark",
+  "name": "Glyph Mark",
+  "description": "Bold color block on the left holding a large company initial. Clean hierarchy on the right. Works well when the user has no uploaded logo.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "sidebar", "type": "shape", "shape": "rect", "x": 0, "y": 0, "width": 120, "height": 200, "fill": "palette.backgroundAlt" },
+    { "id": "monogram", "type": "text", "x": 60, "y": 60, "source": "cardInfo.company", "fontSize": 48, "fontWeight": "bold", "fontFamily": "design.font", "color": "palette.accent", "alignment": "center", "firstChar": true },
+    { "id": "studio-label", "type": "text", "x": 60, "y": 115, "source": "cardInfo.company", "fontSize": 6, "fontWeight": "bold", "fontFamily": "design.font", "letterSpacing": 2.5, "textTransform": "uppercase", "color": "palette.onAlt", "alignment": "center" },
+    { "id": "name", "type": "text", "x": 140, "y": 30, "source": "cardInfo.name", "fontSize": "heading", "fontWeight": "bold", "fontFamily": "design.font", "letterSpacing": -0.3, "color": "palette.primary" },
+    { "id": "title", "type": "text", "x": 140, "y": 54, "source": "cardInfo.title", "fontSize": "body", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "tagline", "type": "text", "x": 140, "y": 70, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic", "fontFamily": "design.font", "color": "palette.secondary", "hideIfEmpty": true },
+    { "id": "email", "type": "text", "x": 140, "y": 132, "source": "cardInfo.email", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "phone", "type": "text", "x": 140, "y": 146, "source": "cardInfo.phone", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
+    { "id": "website", "type": "text", "x": 140, "y": 160, "source": "cardInfo.website", "fontSize": "caption", "fontWeight": "semibold", "fontFamily": "design.font", "color": "palette.primary", "hideIfEmpty": true },
+    { "id": "address", "type": "text", "x": 140, "y": 176, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true }
+  ]
+}

@@ -7,7 +7,6 @@ import {
   CreditCard,
   Package,
   MapPin,
-  Check,
   Loader2,
 } from "lucide-react";
 
@@ -234,12 +233,12 @@ export default function OrderStep() {
             <button
               onClick={handlePlaceOrder}
               disabled={isPlacing}
-              className="w-full flex items-center justify-center gap-2 py-3 px-6 
-                rounded-xl text-white font-semibold
-                bg-gradient-to-r from-green-500 to-emerald-600
-                hover:from-green-600 hover:to-emerald-700
-                disabled:opacity-70
-                shadow-lg shadow-green-200 transition-all"
+              className="w-full flex items-center justify-center gap-2 py-3 px-6
+                rounded-full text-[#163300] font-semibold
+                bg-[#9fe870] hover:bg-[#cdffad]
+                hover:scale-[1.02] active:scale-[0.98]
+                disabled:opacity-70 disabled:scale-100
+                transition-all"
             >
               {isPlacing ? (
                 <>

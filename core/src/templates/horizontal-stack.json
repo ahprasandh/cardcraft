@@ -1,0 +1,134 @@
+{
+  "id": "horizontal-stack",
+  "name": "Horizontal Stack",
+  "description": "Tight horizontal rows separated by full-width rules. Dense and utilitarian.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "rule1",
+      "type": "shape",
+      "shape": "line",
+      "x": 0,
+      "y": 44,
+      "x2": 350,
+      "y2": 44,
+      "stroke": "palette.primary",
+      "strokeWidth": 0.5
+    },
+    {
+      "id": "rule2",
+      "type": "shape",
+      "shape": "line",
+      "x": 0,
+      "y": 90,
+      "x2": 350,
+      "y2": 90,
+      "stroke": "palette.primary",
+      "strokeWidth": 0.5
+    },
+    {
+      "id": "rule3",
+      "type": "shape",
+      "shape": "line",
+      "x": 0,
+      "y": 136,
+      "x2": 350,
+      "y2": 136,
+      "stroke": "palette.primary",
+      "strokeWidth": 0.5
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 16,
+      "y": 12,
+      "source": "cardInfo.name",
+      "fontSize": 18,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.primary"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 326,
+      "y": 16,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.secondary",
+      "alignment": "right"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 16,
+      "y": 54,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 16,
+      "y": 70,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.secondary",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 16,
+      "y": 100,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 16,
+      "y": 116,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 16,
+      "y": 146,
+      "source": "cardInfo.website",
+      "fontSize": "body",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.primary"
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "x": 16,
+      "y": 164,
+      "source": "cardInfo.address",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    }
+  ]
+}

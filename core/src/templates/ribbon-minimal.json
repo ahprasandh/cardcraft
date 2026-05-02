@@ -1,0 +1,18 @@
+{
+  "id": "ribbon-minimal",
+  "name": "Ribbon Minimal",
+  "description": "A thin accent ribbon across the upper third with the name centered above it. Elegant restraint with a single decorative gesture.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "ribbon", "type": "shape", "shape": "rect", "x": 0, "y": 58, "width": 350, "height": 3, "fill": "palette.accent" },
+    { "id": "name", "type": "text", "x": 175, "y": 26, "source": "cardInfo.name", "fontSize": "heading", "fontWeight": "bold", "fontFamily": "design.font", "letterSpacing": -0.3, "color": "palette.primary", "alignment": "center" },
+    { "id": "title", "type": "text", "x": 175, "y": 74, "source": "cardInfo.title", "fontSize": "body", "fontFamily": "design.font", "color": "palette.text", "alignment": "center" },
+    { "id": "company", "type": "text", "x": 175, "y": 90, "source": "cardInfo.company", "fontSize": "caption", "fontWeight": "semibold", "fontFamily": "design.font", "letterSpacing": 1.0, "textTransform": "uppercase", "color": "palette.secondary", "alignment": "center" },
+    { "id": "tagline", "type": "text", "x": 175, "y": 108, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic", "fontFamily": "design.font", "color": "palette.secondary", "alignment": "center", "hideIfEmpty": true },
+    { "id": "divider", "type": "shape", "shape": "rect", "x": 155, "y": 134, "width": 40, "height": 0.5, "fill": "palette.accent" },
+    { "id": "email", "type": "text", "x": 175, "y": 148, "source": "cardInfo.email", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "center" },
+    { "id": "phone", "type": "text", "x": 175, "y": 162, "source": "cardInfo.phone", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "center", "hideIfEmpty": true },
+    { "id": "website", "type": "text", "x": 175, "y": 176, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "center", "hideIfEmpty": true }
+  ]
+}

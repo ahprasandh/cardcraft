@@ -1,0 +1,17 @@
+{
+  "id": "edge-info",
+  "name": "Edge Info",
+  "description": "Information clings to the four edges of the card — name top-left, company top-right, contacts bottom-left and right — with an empty middle.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "name",    "type": "text", "x": 20,  "y": 22,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "bold",   "fontFamily": "design.font", "color": "palette.primary" },
+    { "id": "company", "type": "text", "x": 330, "y": 22,  "source": "cardInfo.company", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.secondary", "alignment": "right" },
+    { "id": "title",   "type": "text", "x": 330, "y": 130, "source": "cardInfo.title",   "fontSize": "body",                              "fontFamily": "design.font", "color": "palette.secondary", "alignment": "right" },
+    { "id": "email",   "type": "text", "x": 20,  "y": 158, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "phone",   "type": "text", "x": 20,  "y": 170, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "website", "type": "text", "x": 330, "y": 146, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right", "hideIfEmpty": true },
+    { "id": "address", "type": "text", "x": 330, "y": 158, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right", "hideIfEmpty": true },
+    { "id": "tagline", "type": "text", "x": 330, "y": 170, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic", "fontFamily": "design.font", "color": "palette.text", "alignment": "right", "hideIfEmpty": true }
+  ]
+}

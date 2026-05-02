@@ -1,0 +1,18 @@
+{
+  "id": "mono-tech",
+  "name": "Mono Tech",
+  "description": "Monospace typography with code-comment styling — `// title`, `/* tagline */`, and `›` arrows on contacts.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "company", "type": "text", "x": 20, "y": 50,  "source": "cardInfo.company", "fontSize": "caption", "fontFamily": "mono", "letterSpacing": 1.6, "textTransform": "uppercase", "color": "palette.text" },
+    { "id": "name",    "type": "text", "x": 20, "y": 70,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "bold", "fontFamily": "mono", "color": "palette.primary" },
+    { "id": "title",   "type": "text", "x": 20, "y": 92,  "source": "cardInfo.title",   "fontSize": "body",    "fontFamily": "mono", "color": "palette.secondary", "prefix": "// " },
+    { "id": "tagline", "type": "text", "x": 20, "y": 106, "source": "cardInfo.tagline", "fontSize": "caption", "fontFamily": "mono", "color": "palette.text", "opacity": 0.7, "prefix": "/* ", "suffix": " */", "hideIfEmpty": true },
+    { "id": "divider", "type": "shape", "shape": "rect", "x": 20, "y": 120, "width": 310, "height": 1, "fill": "palette.accent", "opacity": 0.3 },
+    { "id": "email",   "type": "text", "x": 20, "y": 132, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "mono", "color": "palette.text", "prefix": "› " },
+    { "id": "phone",   "type": "text", "x": 20, "y": 144, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "mono", "color": "palette.text", "prefix": "› " },
+    { "id": "website", "type": "text", "x": 20, "y": 156, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "mono", "color": "palette.text", "prefix": "› ", "hideIfEmpty": true },
+    { "id": "address", "type": "text", "x": 20, "y": 168, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "mono", "color": "palette.text", "prefix": "› ", "hideIfEmpty": true }
+  ]
+}

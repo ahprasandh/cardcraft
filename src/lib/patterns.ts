@@ -51,7 +51,14 @@ export const PATTERNS: PatternMeta[] = [
 export function getPatternSVG(patternId: PatternId, color: string, opacity: number = 0.08): string | null {
   if (patternId === "none") return null;
 
-  // Use raw color in SVG, encodeURIComponent on the whole SVG for data URI
+  // Use raw color in SVG. We base64-encode the resulting SVG (rather
+  // than encodeURIComponent it) so the data URL is composed entirely of
+  // [A-Za-z0-9+/=] characters. That's important because dom-to-image
+  // clones the card into a foreignObject inside another SVG, and a
+  // URL-encoded inner SVG (with %3C/%3E/%22) can break when the browser
+  // tries to render the outer SVG as an Image. Base64 sidesteps the
+  // whole nested-encoding problem — same trick the user-uploaded logo
+  // uses (data:image/png;base64,...) which is why logos always export.
   const c = color;
 
   const patterns: Record<string, string> = {
@@ -87,5 +94,12 @@ export function getPatternSVG(patternId: PatternId, color: string, opacity: numb
   const svg = patterns[patternId];
   if (!svg) return null;
 
-  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+  // btoa needs Latin-1; our SVG strings are pure ASCII so it's safe.
+  // Wrap in unescape(encodeURIComponent(...)) defensively to handle any
+  // future non-ASCII characters (rare but possible if a color string
+  // ever contains a special char).
+  const safe = typeof unescape === "function"
+    ? unescape(encodeURIComponent(svg))
+    : svg;
+  return `url("data:image/svg+xml;base64,${btoa(safe)}")`;
 }

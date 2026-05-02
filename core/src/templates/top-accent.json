@@ -1,0 +1,18 @@
+{
+  "id": "top-accent",
+  "name": "Top Accent Bar",
+  "description": "Thin colored bar at the top of a clean white card, contact details split into two columns at the bottom.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "accent-bar", "type": "shape", "shape": "rect", "x": 0, "y": 0, "width": 350, "height": 6, "fill": "palette.accent" },
+    { "id": "name",       "type": "text",  "x": 20, "y": 22,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "bold",   "fontFamily": "design.font", "color": "palette.primary" },
+    { "id": "title",      "type": "text",  "x": 20, "y": 46,  "source": "cardInfo.title",   "fontSize": "body",                            "fontFamily": "design.font", "color": "palette.secondary" },
+    { "id": "company",    "type": "text",  "x": 20, "y": 60,  "source": "cardInfo.company", "fontSize": "caption", "fontWeight": "medium", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "tagline",    "type": "text",  "x": 20, "y": 72,  "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
+    { "id": "email",      "type": "text",  "x": 20,  "y": 158, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "phone",      "type": "text",  "x": 20,  "y": 170, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "website",    "type": "text",  "x": 330, "y": 158, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right", "hideIfEmpty": true },
+    { "id": "address",    "type": "text",  "x": 330, "y": 170, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right", "hideIfEmpty": true }
+  ]
+}

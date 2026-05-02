@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { Sparkles } from "lucide-react";
+import { Wand2 } from "lucide-react";
 
 const messages = [
   "AI is designing your cards…",
@@ -22,7 +22,7 @@ function SkeletonCard({ delay }: { delay: number }) {
         className="absolute inset-0 z-10"
         style={{
           background:
-            "linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.08) 30%, rgba(99,102,241,0.15) 50%, rgba(99,102,241,0.08) 70%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, rgba(159,232,112,0.10) 30%, rgba(159,232,112,0.18) 50%, rgba(159,232,112,0.10) 70%, transparent 100%)",
           backgroundSize: "200% 100%",
           animation: `shimmer 1.8s ease-in-out infinite`,
           animationDelay: `${delay}ms`,
@@ -54,7 +54,7 @@ function SkeletonCard({ delay }: { delay: number }) {
 
       {/* Accent stripe */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-200 via-purple-200 to-blue-200 opacity-60"
+        className="absolute bottom-0 left-0 right-0 h-1 bg-[#9fe870] opacity-60"
         style={{ animation: `accentPulse 2s ease-in-out infinite`, animationDelay: `${delay}ms` }}
       />
     </div>
@@ -92,8 +92,8 @@ export default function LoadingOverlay() {
 
       {/* Header */}
       <div className="flex items-center gap-2 mb-8">
-        <Sparkles size={22} className="text-indigo-500 animate-pulse" />
-        <span className="text-lg font-semibold text-gray-800">AI is generating designs</span>
+        <Wand2 size={22} className="text-[#0e0f0c] animate-pulse" />
+        <span className="text-lg font-semibold text-[#0e0f0c]">AI is generating designs</span>
       </div>
 
       {/* Skeleton grid */}
@@ -106,7 +106,7 @@ export default function LoadingOverlay() {
       {/* Rotating message */}
       <p
         key={msgIdx}
-        className="mt-8 text-sm font-medium text-indigo-500"
+        className="mt-8 text-sm font-medium text-[#454745]"
         style={{ animation: "fadeUp 2.2s ease-in-out" }}
       >
         {messages[msgIdx]}

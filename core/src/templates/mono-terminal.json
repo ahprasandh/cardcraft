@@ -1,0 +1,137 @@
+{
+  "id": "mono-terminal",
+  "name": "Mono Terminal",
+  "description": "Monospace type with a terminal prompt aesthetic. For developers and tech founders.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.backgroundAlt",
+  "elements": [
+    {
+      "id": "prompt",
+      "type": "text",
+      "x": 20,
+      "y": 16,
+      "text": "$ whoami",
+      "fontSize": 7,
+      "fontWeight": "medium",
+      "fontFamily": "mono",
+      "color": "palette.accent"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 32,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "mono",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "title-line",
+      "type": "text",
+      "x": 20,
+      "y": 56,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "mono",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "company-line",
+      "type": "text",
+      "x": 20,
+      "y": 72,
+      "source": "cardInfo.company",
+      "fontSize": "body",
+      "fontFamily": "mono",
+      "color": "palette.accent"
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "line",
+      "x": 20,
+      "y": 100,
+      "x2": 330,
+      "y2": 100,
+      "stroke": "palette.accent",
+      "strokeWidth": 0.5
+    },
+    {
+      "id": "email-label",
+      "type": "text",
+      "x": 20,
+      "y": 114,
+      "text": "mail:",
+      "fontSize": "caption",
+      "fontFamily": "mono",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 60,
+      "y": 114,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "mono",
+      "color": "palette.accent"
+    },
+    {
+      "id": "phone-label",
+      "type": "text",
+      "x": 20,
+      "y": 130,
+      "text": "tel:",
+      "fontSize": "caption",
+      "fontFamily": "mono",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 60,
+      "y": 130,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "mono",
+      "color": "palette.accent",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "web-label",
+      "type": "text",
+      "x": 20,
+      "y": 146,
+      "text": "web:",
+      "fontSize": "caption",
+      "fontFamily": "mono",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 60,
+      "y": 146,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "mono",
+      "color": "palette.accent",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "cursor",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 172,
+      "width": 8,
+      "height": 12,
+      "fill": "palette.accent"
+    }
+  ]
+}

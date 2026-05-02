@@ -1,0 +1,102 @@
+{
+  "id": "wide-band",
+  "name": "Wide Band",
+  "description": "A bold accent band across the center holds the name. Clean zones above and below.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "company",
+      "type": "text",
+      "x": 24,
+      "y": 18,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "textTransform": "uppercase",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 24,
+      "y": 32,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "band",
+      "type": "shape",
+      "shape": "rect",
+      "x": 0,
+      "y": 60,
+      "width": 350,
+      "height": 56,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 24,
+      "y": 72,
+      "source": "cardInfo.name",
+      "fontSize": 20,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.onAccent"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 24,
+      "y": 96,
+      "source": "cardInfo.title",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAccent"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 24,
+      "y": 136,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 24,
+      "y": 150,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 24,
+      "y": 164,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.primary",
+      "hideIfEmpty": true
+    }
+  ]
+}

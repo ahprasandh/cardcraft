@@ -1,0 +1,20 @@
+{
+  "id": "vertical-text",
+  "name": "Vertical Text",
+  "description": "Thin colored strip on the left holds the name rotated vertically; the rest of the card holds the standard content.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "left-strip",   "type": "shape", "shape": "rect", "x": 0, "y": 0, "width": 42, "height": 200, "fill": "palette.backgroundAlt" },
+    { "id": "vertical-name","type": "text",  "x": 21, "y": 100, "source": "cardInfo.name", "fontSize": "body", "fontWeight": "bold", "fontFamily": "design.font", "letterSpacing": 2.0, "textTransform": "uppercase", "color": "palette.onAlt", "alignment": "center", "rotation": -90 },
+    { "id": "name",    "type": "text", "x": 62, "y": 56,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "bold",   "fontFamily": "design.font", "color": "palette.primary" },
+    { "id": "title",   "type": "text", "x": 62, "y": 78,  "source": "cardInfo.title",   "fontSize": "body",                            "fontFamily": "design.font", "color": "palette.secondary" },
+    { "id": "company", "type": "text", "x": 62, "y": 94,  "source": "cardInfo.company", "fontSize": "body",    "fontWeight": "medium", "fontFamily": "design.font", "color": "palette.primary" },
+    { "id": "tagline", "type": "text", "x": 62, "y": 108, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
+    { "id": "divider", "type": "shape", "shape": "rect", "x": 62, "y": 120, "width": 24, "height": 1, "fill": "palette.accent" },
+    { "id": "email",   "type": "text", "x": 62, "y": 128, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "phone",   "type": "text", "x": 62, "y": 140, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "website", "type": "text", "x": 62, "y": 152, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
+    { "id": "address", "type": "text", "x": 62, "y": 164, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true }
+  ]
+}

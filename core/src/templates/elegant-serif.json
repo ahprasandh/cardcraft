@@ -1,0 +1,19 @@
+{
+  "id": "elegant-serif",
+  "name": "Elegant Serif",
+  "description": "Refined serif typography with ornamental dividers above and below the name. Tagline wrapped in curly quotes.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "company",       "type": "text",  "x": 175, "y": 48,  "source": "cardInfo.company", "fontSize": "caption", "fontFamily": "serif", "letterSpacing": 2.4, "textTransform": "uppercase", "color": "palette.accent",    "alignment": "center" },
+    { "id": "divider-top",   "type": "shape", "shape": "rect", "x": 159, "y": 62, "width": 32, "height": 1, "fill": "palette.accent", "opacity": 0.5 },
+    { "id": "name",          "type": "text",  "x": 175, "y": 68,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "light",  "fontStyle": "italic", "fontFamily": "serif", "color": "palette.primary",   "alignment": "center" },
+    { "id": "title",         "type": "text",  "x": 175, "y": 92,  "source": "cardInfo.title",   "fontSize": "caption", "fontFamily": "serif",  "letterSpacing": 0.6, "color": "palette.secondary", "alignment": "center" },
+    { "id": "tagline",       "type": "text",  "x": 175, "y": 105, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic",  "fontFamily": "serif", "color": "palette.text",      "alignment": "center", "opacity": 0.7, "prefix": "“", "suffix": "”", "hideIfEmpty": true },
+    { "id": "divider-bottom","type": "shape", "shape": "rect", "x": 159, "y": 118, "width": 32, "height": 1, "fill": "palette.accent", "opacity": 0.5 },
+    { "id": "email",         "type": "text",  "x": 175, "y": 124, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "serif", "color": "palette.text", "alignment": "center" },
+    { "id": "phone",         "type": "text",  "x": 175, "y": 136, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "serif", "color": "palette.text", "alignment": "center" },
+    { "id": "website",       "type": "text",  "x": 175, "y": 148, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "serif", "color": "palette.text", "alignment": "center", "hideIfEmpty": true },
+    { "id": "address",       "type": "text",  "x": 175, "y": 160, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "serif", "color": "palette.text", "alignment": "center", "hideIfEmpty": true }
+  ]
+}

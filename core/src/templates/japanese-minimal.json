@@ -1,0 +1,17 @@
+{
+  "id": "japanese-minimal",
+  "name": "Japanese Minimal",
+  "description": "Extreme whitespace with all content right-aligned in the bottom-right corner.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "name",     "type": "text",  "x": 330, "y": 78,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "light", "fontFamily": "design.font", "letterSpacing": 0.5,                            "color": "palette.primary",   "alignment": "right" },
+    { "id": "title",    "type": "text",  "x": 330, "y": 100, "source": "cardInfo.title",   "fontSize": "caption",                         "fontFamily": "design.font", "letterSpacing": 1.0, "textTransform": "uppercase", "color": "palette.secondary", "alignment": "right" },
+    { "id": "company",  "type": "text",  "x": 330, "y": 113, "source": "cardInfo.company", "fontSize": "caption",                         "fontFamily": "design.font", "color": "palette.text",      "alignment": "right" },
+    { "id": "tagline",  "type": "text",  "x": 330, "y": 126, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic",  "fontFamily": "design.font", "color": "palette.text",      "alignment": "right", "hideIfEmpty": true },
+    { "id": "divider",  "type": "shape", "shape": "rect", "x": 306, "y": 140, "width": 24, "height": 1, "fill": "palette.accent" },
+    { "id": "email",    "type": "text",  "x": 330, "y": 146, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right" },
+    { "id": "phone",    "type": "text",  "x": 330, "y": 158, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right" },
+    { "id": "website",  "type": "text",  "x": 330, "y": 170, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right", "hideIfEmpty": true }
+  ]
+}

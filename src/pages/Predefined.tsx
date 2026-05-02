@@ -1,11 +1,13 @@
 
-import { useState, useMemo, useCallback, useEffect } from "react";
-import { TEMPLATES } from "@/lib/designs";
+import { useState, useMemo, useEffect } from "react";
+import { TEMPLATES, COLOR_THEMES } from "@/lib/designs";
 import { PATTERNS, getPatternSVG } from "@/lib/patterns";
 import { LOGOS, LogoIcon } from "@/lib/logos";
 import { TEMPLATE_CATALOG, type IndustryTag, type StyleTag, type MoodTag, type DensityTag, type CatalogEntry } from "@/lib/template-catalog";
 import BusinessCard from "@/components/BusinessCard";
-import type { CardDesign, CardInfo, TemplateId, PatternPlacement, LogoPlacement, ColorTheme } from "@/lib/types";
+import CardBuilder from "@/components/CardBuilder";
+import Logo from "@/components/Logo";
+import type { CardDesign, CardInfo, TemplateId, PatternPlacement, LogoPlacement } from "@/lib/types";
 
 const SAMPLE_INFO: CardInfo = {
   name: "James Smith",
@@ -21,33 +23,7 @@ const SAMPLE_INFO: CardInfo = {
   customLogoUrl: "",
 };
 
-const COLOR_THEMES: { name: string; colors: ColorTheme }[] = [
-  { name: "Navy Gold", colors: { primary: "#1a365d", secondary: "#d4a843", accent: "#d4a843", background: "#ffffff", backgroundAlt: "#1a365d", text: "#4a5568" } },
-  { name: "Slate Blue", colors: { primary: "#1e293b", secondary: "#3b82f6", accent: "#3b82f6", background: "#f8fafc", backgroundAlt: "#1e293b", text: "#64748b" } },
-  { name: "Forest Green", colors: { primary: "#1b4332", secondary: "#a5d6a7", accent: "#2d6a4f", background: "#ffffff", backgroundAlt: "#1b4332", text: "#4b5563" } },
-  { name: "Midnight Teal", colors: { primary: "#ffffff", secondary: "#5eead4", accent: "#14b8a6", background: "#0f172a", backgroundAlt: "#134e4a", text: "#94a3b8" } },
-  { name: "Burgundy Cream", colors: { primary: "#7f1d1d", secondary: "#a16207", accent: "#991b1b", background: "#fefce8", backgroundAlt: "#7f1d1d", text: "#57534e" } },
-  { name: "Pure Mono", colors: { primary: "#111827", secondary: "#4b5563", accent: "#111827", background: "#ffffff", backgroundAlt: "#f3f4f6", text: "#6b7280" } },
-  { name: "Royal Purple", colors: { primary: "#ffffff", secondary: "#c4b5fd", accent: "#8b5cf6", background: "#2e1065", backgroundAlt: "#4c1d95", text: "#a5b4fc" } },
-  { name: "Coral Warm", colors: { primary: "#1c1917", secondary: "#f97316", accent: "#ea580c", background: "#fff7ed", backgroundAlt: "#ea580c", text: "#78716c" } },
-  { name: "Cool Charcoal", colors: { primary: "#f9fafb", secondary: "#9ca3af", accent: "#6366f1", background: "#1f2937", backgroundAlt: "#111827", text: "#d1d5db" } },
-  { name: "Rose Elegant", colors: { primary: "#1c1917", secondary: "#be185d", accent: "#e11d48", background: "#fff1f2", backgroundAlt: "#be185d", text: "#71717a" } },
-  { name: "Earth Tone", colors: { primary: "#292524", secondary: "#a16207", accent: "#b45309", background: "#faf5ef", backgroundAlt: "#44403c", text: "#78716c" } },
-  { name: "Ocean Deep", colors: { primary: "#ffffff", secondary: "#38bdf8", accent: "#0ea5e9", background: "#0c4a6e", backgroundAlt: "#075985", text: "#bae6fd" } },
-  { name: "Sage Minimal", colors: { primary: "#1a2e1a", secondary: "#6b8f6b", accent: "#4a7c4a", background: "#f0f5f0", backgroundAlt: "#d1e7d1", text: "#5c6b5c" } },
-  { name: "Sunset Gradient", colors: { primary: "#ffffff", secondary: "#fbbf24", accent: "#f59e0b", background: "#7c2d12", backgroundAlt: "#c2410c", text: "#fed7aa" } },
-  { name: "Arctic Clean", colors: { primary: "#0f172a", secondary: "#0284c7", accent: "#0ea5e9", background: "#f0f9ff", backgroundAlt: "#e0f2fe", text: "#475569" } },
-];
-
 const PATTERN_PLACEMENTS: PatternPlacement[] = ["full", "top", "bottom", "left", "right", "top-left", "top-right", "bottom-left", "bottom-right", "diagonal-tl", "diagonal-br"];
-const LOGO_PLACEMENTS: LogoPlacement[] = ["top-left", "top-right", "top-center", "center-left", "center", "center-right", "bottom-left", "bottom-right", "bottom-center"];
-const FONTS: CardDesign["font"][] = ["sans", "serif", "mono"];
-const TEXT_ALIGNS: CardDesign["textAlign"][] = ["left", "center", "right"];
-const SPACINGS: CardDesign["spacing"][] = ["compact", "normal", "spacious"];
-const BORDER_RADII: CardDesign["borderRadius"][] = ["none", "small", "medium", "large"];
-const BORDER_SIDES: CardDesign["border"]["sides"][] = ["none", "all", "top", "bottom", "left", "right"];
-const LOGO_SIZES: CardDesign["logo"]["size"][] = ["small", "medium", "large"];
-const BG_TYPES: CardDesign["backgroundEffect"]["type"][] = ["none", "solid", "gradient"];
 
 const ALL_INDUSTRY_TAGS: IndustryTag[] = [
   "tech", "finance", "legal", "healthcare", "education",
@@ -60,22 +36,6 @@ const ALL_MOOD_TAGS: MoodTag[] = ["light", "dark", "warm", "cool"];
 const ALL_DENSITY_TAGS: DensityTag[] = ["airy", "balanced", "compact"];
 const CATALOG_PAGE_SIZE = 24;
 
-/* ── Tiny reusable toggle button row ─────────────────────────────── */
-function Toggle<T extends string>({ options, value, onChange, label }: { options: T[]; value: T; onChange: (v: T) => void; label: string }) {
-  return (
-    <div>
-      <label className="text-xs font-semibold text-gray-600 mb-1 block">{label}</label>
-      <div className="flex flex-wrap gap-1">
-        {options.map((o) => (
-          <button key={o} onClick={() => onChange(o)}
-            className={`px-2 py-1 text-xs rounded font-mono transition-colors ${o === value ? "bg-indigo-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
-          >{o}</button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 /* ── Tag filter row for catalog ──────────────────────────────────── */
 function FilterRow<T extends string>({ label, tags, active, onToggle }: { label: string; tags: T[]; active: T[]; onToggle: (t: T) => void }) {
   return (
@@ -86,7 +46,7 @@ function FilterRow<T extends string>({ label, tags, active, onToggle }: { label:
           <button key={t} onClick={() => onToggle(t)}
             className={`px-2.5 py-1 text-xs rounded-full font-medium transition-colors ${
               active.includes(t)
-                ? "bg-indigo-600 text-white"
+                ? "bg-[#0e0f0c] text-[#9fe870]"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >{t}</button>
@@ -105,12 +65,12 @@ function CatalogCard({ entry, info }: { entry: CatalogEntry; info: CardInfo }) {
       </div>
       <div className="p-3 space-y-2">
         <div className="flex items-center gap-1.5">
-          <code className="text-[10px] bg-gray-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono truncate">{entry.variant.templateId}</code>
+          <code className="text-[10px] bg-gray-100 px-1.5 py-0.5 rounded text-[#0e0f0c] font-mono truncate">{entry.variant.templateId}</code>
           <span className="text-[10px] text-gray-400 truncate">{entry.variant.name}</span>
         </div>
         <div className="flex flex-wrap gap-1">
           {entry.tags.industry.map((t) => (
-            <span key={`i-${t}`} className="px-1.5 py-0.5 text-[9px] rounded-full bg-blue-50 text-blue-700 font-medium">{t}</span>
+            <span key={`i-${t}`} className="px-1.5 py-0.5 text-[9px] rounded-full bg-[#0e0f0c]/8 text-[#0e0f0c] font-medium">{t}</span>
           ))}
           {entry.tags.style.map((t) => (
             <span key={`s-${t}`} className="px-1.5 py-0.5 text-[9px] rounded-full bg-purple-50 text-purple-700 font-medium">{t}</span>
@@ -150,27 +110,6 @@ export default function PredefinedPage() {
     window.location.hash = tab === "builder" ? "/predefined" : `/predefined/${tab}`;
   };
 
-  // ── Builder state ───────────────────────────────────────────────
-  const [templateId, setTemplateId] = useState<TemplateId>("minimal-clean");
-  const [themeIdx, setThemeIdx] = useState(0);
-  const [font, setFont] = useState<CardDesign["font"]>("sans");
-  const [textAlign, setTextAlign] = useState<CardDesign["textAlign"]>("left");
-  const [spacing, setSpacing] = useState<CardDesign["spacing"]>("normal");
-  const [borderRadius, setBorderRadius] = useState<CardDesign["borderRadius"]>("medium");
-  const [patternId, setPatternId] = useState("none");
-  const [patternOpacity, setPatternOpacity] = useState(0.15);
-  const [patternPlacement, setPatternPlacement] = useState<PatternPlacement>("full");
-  const [logoId, setLogoId] = useState("circle-letter");
-  const [logoPlacement, setLogoPlacement] = useState<LogoPlacement>("top-left");
-  const [logoSize, setLogoSize] = useState<CardDesign["logo"]["size"]>("medium");
-  const [borderSides, setBorderSides] = useState<CardDesign["border"]["sides"]>("none");
-  const [borderWidth, setBorderWidth] = useState(2);
-  const [bgType, setBgType] = useState<CardDesign["backgroundEffect"]["type"]>("none");
-  const [bgOpacity, setBgOpacity] = useState(0.04);
-  const [bgAngle, setBgAngle] = useState(135);
-  const [showJson, setShowJson] = useState(false);
-  const [copied, setCopied] = useState(false);
-
   // ── Catalog filter state ────────────────────────────────────────
   const [filterIndustry, setFilterIndustry] = useState<IndustryTag[]>([]);
   const [filterStyle, setFilterStyle] = useState<StyleTag[]>([]);
@@ -206,29 +145,14 @@ export default function PredefinedPage() {
     setCatalogPage(0);
   }
 
-  const theme = COLOR_THEMES[themeIdx];
-
-  const builderDesign: CardDesign = {
-    id: "builder-preview",
-    templateId,
-    name: "Builder Preview",
-    reasoning: "",
-    colors: theme.colors,
-    font,
-    textAlign,
-    spacing,
-    borderRadius,
-    pattern: { id: patternId, opacity: patternOpacity, color: theme.colors.accent, placement: patternPlacement },
-    backgroundEffect: { type: bgType, color: theme.colors.accent, opacity: bgOpacity, angle: bgAngle },
-    logo: { id: logoId, placement: logoPlacement, size: logoSize },
-    border: { sides: borderSides, width: borderWidth, color: theme.colors.accent },
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-white p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Design System Catalog</h1>
-        <p className="text-gray-500 mb-6">Everything the LLM can pick from when designing cards</p>
+        <div className="flex items-center gap-3 mb-2">
+          <Logo variant="light" size={32} />
+          <span className="text-2xl font-bold text-[#0e0f0c]">Design System Catalog</span>
+        </div>
+        <p className="text-[#454745] mb-6">Everything the LLM can pick from when designing cards</p>
 
         {/* Tab bar */}
         <div className="flex gap-1 mb-8 border-b border-gray-200">
@@ -242,7 +166,7 @@ export default function PredefinedPage() {
               onClick={() => navigate(tab.id)}
               className={`px-5 py-2.5 text-sm font-medium rounded-t-lg transition-colors -mb-px ${
                 activeTab === tab.id
-                  ? "bg-white border border-gray-200 border-b-white text-indigo-600"
+                  ? "bg-white border border-gray-200 border-b-white text-[#0e0f0c]"
                   : "text-gray-500 hover:text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -253,186 +177,8 @@ export default function PredefinedPage() {
 
         {/* ═══ CARD BUILDER ═══ */}
         {activeTab === "builder" && (
-        <section className="mb-16 bg-white rounded-xl border border-gray-200 overflow-hidden">
-          <div className="bg-indigo-600 px-6 py-3">
-            <h2 className="text-lg font-bold text-white">Card Builder</h2>
-            <p className="text-indigo-200 text-sm">Pick every property and see it live</p>
-          </div>
-
-          <div className="flex flex-col lg:flex-row">
-            {/* Controls */}
-            <div className="flex-1 p-6 space-y-5 overflow-y-auto max-h-[80vh] border-r border-gray-100">
-
-              {/* Template */}
-              <div>
-                <label className="text-xs font-semibold text-gray-600 mb-1 block">Template</label>
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-1 max-h-40 overflow-y-auto pr-1">
-                  {TEMPLATES.map((t) => (
-                    <button key={t.id} onClick={() => setTemplateId(t.id)}
-                      className={`px-2 py-1.5 text-[10px] rounded text-left truncate transition-colors ${t.id === templateId ? "bg-indigo-600 text-white" : "bg-gray-50 text-gray-700 hover:bg-gray-100"}`}
-                      title={t.description}
-                    >{t.name}</button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Color Theme */}
-              <div>
-                <label className="text-xs font-semibold text-gray-600 mb-1 block">Color Theme</label>
-                <div className="flex flex-wrap gap-1.5">
-                  {COLOR_THEMES.map((t, i) => (
-                    <button key={t.name} onClick={() => setThemeIdx(i)} title={t.name}
-                      className={`w-8 h-8 rounded-full border-2 transition-all flex items-center justify-center ${i === themeIdx ? "border-indigo-500 scale-110" : "border-transparent hover:border-gray-300"}`}
-                    >
-                      <div className="w-6 h-6 rounded-full overflow-hidden flex">
-                        <div className="flex-1" style={{ backgroundColor: t.colors.background }} />
-                        <div className="flex-1" style={{ backgroundColor: t.colors.backgroundAlt }} />
-                      </div>
-                    </button>
-                  ))}
-                </div>
-                <p className="text-[10px] text-gray-400 mt-1">{theme.name}</p>
-              </div>
-
-              {/* Font / Align / Spacing / Border Radius row */}
-              <div className="grid grid-cols-2 gap-4">
-                <Toggle options={FONTS} value={font} onChange={setFont} label="Font" />
-                <Toggle options={TEXT_ALIGNS} value={textAlign} onChange={setTextAlign} label="Text Align" />
-                <Toggle options={SPACINGS} value={spacing} onChange={setSpacing} label="Spacing" />
-                <Toggle options={BORDER_RADII} value={borderRadius} onChange={setBorderRadius} label="Border Radius" />
-              </div>
-
-              {/* Pattern */}
-              <div>
-                <label className="text-xs font-semibold text-gray-600 mb-1 block">Pattern</label>
-                <div className="flex flex-wrap gap-1">
-                  {PATTERNS.map((p) => {
-                    const preview = p.id !== "none" ? getPatternSVG(p.id, "#333", 0.5) : null;
-                    return (
-                      <button key={p.id} onClick={() => setPatternId(p.id)} title={p.name}
-                        className={`w-10 h-10 rounded border text-[9px] transition-all ${p.id === patternId ? "border-indigo-500 ring-2 ring-indigo-300" : "border-gray-200 hover:border-gray-400"}`}
-                        style={preview ? { backgroundImage: preview, backgroundRepeat: "repeat", backgroundColor: "#f5f5f5" } : { backgroundColor: "#fff" }}
-                      >{p.id === "none" ? "∅" : ""}</button>
-                    );
-                  })}
-                </div>
-                {patternId !== "none" && (
-                  <div className="flex gap-4 mt-2 items-end">
-                    <div className="flex-1">
-                      <label className="text-[10px] text-gray-500">Opacity: {patternOpacity.toFixed(2)}</label>
-                      <input type="range" min="0.02" max="0.3" step="0.01" value={patternOpacity}
-                        onChange={(e) => setPatternOpacity(parseFloat(e.target.value))}
-                        className="w-full h-1.5 accent-indigo-600" />
-                    </div>
-                    <div>
-                      <label className="text-[10px] text-gray-500 block">Placement</label>
-                      <select value={patternPlacement} onChange={(e) => setPatternPlacement(e.target.value as PatternPlacement)}
-                        className="text-xs border rounded px-1.5 py-1 bg-white">
-                        {PATTERN_PLACEMENTS.map((p) => <option key={p} value={p}>{p}</option>)}
-                      </select>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Logo */}
-              <div>
-                <label className="text-xs font-semibold text-gray-600 mb-1 block">Logo</label>
-                <div className="flex flex-wrap gap-1.5">
-                  {LOGOS.map((l) => (
-                    <button key={l.id} onClick={() => setLogoId(l.id)} title={l.name}
-                      className={`w-10 h-10 rounded border flex items-center justify-center transition-all ${l.id === logoId ? "border-indigo-500 ring-2 ring-indigo-300" : "border-gray-200 hover:border-gray-400"}`}
-                    >
-                      {l.id === "none"
-                        ? <span className="text-gray-400 text-xs">∅</span>
-                        : <LogoIcon logoId={l.id} letter="A" size={24} color="#4f46e5" />
-                      }
-                    </button>
-                  ))}
-                </div>
-                {logoId !== "none" && (
-                  <div className="flex gap-4 mt-2">
-                    <Toggle options={LOGO_SIZES} value={logoSize} onChange={setLogoSize} label="Size" />
-                    <div>
-                      <label className="text-[10px] text-gray-500 block mb-1">Placement</label>
-                      <select value={logoPlacement} onChange={(e) => setLogoPlacement(e.target.value as LogoPlacement)}
-                        className="text-xs border rounded px-1.5 py-1 bg-white">
-                        {LOGO_PLACEMENTS.map((p) => <option key={p} value={p}>{p}</option>)}
-                      </select>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Border */}
-              <div>
-                <label className="text-xs font-semibold text-gray-600 mb-1 block">Border</label>
-                <div className="flex gap-4 items-end">
-                  <Toggle options={BORDER_SIDES} value={borderSides} onChange={setBorderSides} label="Sides" />
-                  {borderSides !== "none" && (
-                    <div className="flex-1">
-                      <label className="text-[10px] text-gray-500">Width: {borderWidth}px</label>
-                      <input type="range" min="1" max="6" step="1" value={borderWidth}
-                        onChange={(e) => setBorderWidth(parseInt(e.target.value))}
-                        className="w-full h-1.5 accent-indigo-600" />
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Background Effect */}
-              <div>
-                <Toggle options={BG_TYPES} value={bgType} onChange={setBgType} label="Background Effect" />
-                {bgType !== "none" && (
-                  <div className="flex gap-4 mt-2">
-                    <div className="flex-1">
-                      <label className="text-[10px] text-gray-500">Opacity: {bgOpacity.toFixed(2)}</label>
-                      <input type="range" min="0.01" max="0.2" step="0.01" value={bgOpacity}
-                        onChange={(e) => setBgOpacity(parseFloat(e.target.value))}
-                        className="w-full h-1.5 accent-indigo-600" />
-                    </div>
-                    {bgType === "gradient" && (
-                      <div className="flex-1">
-                        <label className="text-[10px] text-gray-500">Angle: {bgAngle}°</label>
-                        <input type="range" min="0" max="360" step="15" value={bgAngle}
-                          onChange={(e) => setBgAngle(parseInt(e.target.value))}
-                          className="w-full h-1.5 accent-indigo-600" />
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Live preview (sticky) */}
-            <div className="lg:w-[440px] p-6 flex flex-col items-center bg-gray-50 lg:sticky lg:top-0 lg:self-start">
-              <BusinessCard design={builderDesign} info={SAMPLE_INFO} size="large" />
-              <p className="text-xs text-gray-400 mt-4 text-center">
-                {TEMPLATES.find((t) => t.id === templateId)?.name} · {theme.name} · {font}
-              </p>
-
-              <div className="flex gap-2 mt-4">
-                <button onClick={() => setShowJson((v) => !v)}
-                  className="px-3 py-1.5 text-xs font-medium rounded bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-                  {showJson ? "Hide JSON" : "Show JSON"}
-                </button>
-                <button onClick={() => {
-                  navigator.clipboard.writeText(JSON.stringify(builderDesign, null, 2));
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 2000);
-                }}
-                  className="px-3 py-1.5 text-xs font-medium rounded bg-indigo-600 text-white hover:bg-indigo-700 transition-colors">
-                  {copied ? "Copied!" : "Copy JSON"}
-                </button>
-              </div>
-
-              {showJson && (
-                <pre className="mt-3 w-full max-h-64 overflow-auto bg-gray-900 text-green-400 text-[10px] leading-tight p-3 rounded-lg font-mono">
-                  {JSON.stringify(builderDesign, null, 2)}
-                </pre>
-              )}
-            </div>
-          </div>
+        <section className="mb-16 rounded-xl overflow-hidden" style={{ height: "80vh" }}>
+          <CardBuilder />
         </section>
         )}
 
@@ -459,7 +205,7 @@ export default function PredefinedPage() {
               </span>
               {(filterIndustry.length + filterStyle.length + filterMood.length + filterDensity.length > 0) && (
                 <button onClick={() => { setFilterIndustry([]); setFilterStyle([]); setFilterMood([]); setFilterDensity([]); setCatalogPage(0); }}
-                  className="text-xs text-indigo-600 hover:text-indigo-800 font-medium">Clear all filters</button>
+                  className="text-xs text-[#0e0f0c] hover:text-[#0e0f0c] font-medium">Clear all filters</button>
               )}
             </div>
           </div>
@@ -505,7 +251,7 @@ export default function PredefinedPage() {
                 navigator.clipboard.writeText(`{\n${code}\n}`);
                 alert("Copied safeLogoPositions map to clipboard!");
               }}
-              className="text-xs px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-colors font-medium"
+              className="text-xs px-3 py-1.5 rounded-lg bg-[#0e0f0c] text-[#9fe870] hover:bg-[#0e0f0c]/80 transition-colors font-medium"
             >
               Export Logo Positions
             </button>
@@ -534,7 +280,7 @@ export default function PredefinedPage() {
                 <div key={t.id} className="flex flex-col items-center gap-2">
                   <BusinessCard design={design} info={SAMPLE_INFO} size="small" />
                   <div className="text-center">
-                    <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono">{t.id}</code>
+                    <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded text-[#0e0f0c] font-mono">{t.id}</code>
                     <p className="text-xs text-gray-500 mt-0.5">{t.bestFor}</p>
                   </div>
                   <div className="flex flex-wrap justify-center gap-1">
@@ -548,7 +294,7 @@ export default function PredefinedPage() {
                         })}
                         className={`text-[9px] px-1.5 py-0.5 rounded transition-colors ${
                           currentPlacement === pos
-                            ? "bg-indigo-600 text-white"
+                            ? "bg-[#0e0f0c] text-[#9fe870]"
                             : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                         }`}
                       >
@@ -605,10 +351,10 @@ export default function PredefinedPage() {
                     } : { backgroundColor: "#f0f4f8" }}
                   />
                   <div className="p-3">
-                    <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono">{p.id}</code>
+                    <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded text-[#0e0f0c] font-mono">{p.id}</code>
                     <h3 className="font-semibold text-sm text-gray-900 mt-1">{p.name}</h3>
                     <p className="text-xs text-gray-500">{p.description}</p>
-                    <p className="text-xs text-indigo-500 mt-0.5">Best for: {p.bestFor}</p>
+                    <p className="text-xs text-[#454745] mt-0.5">Best for: {p.bestFor}</p>
                   </div>
                 </div>
               );
@@ -633,7 +379,7 @@ export default function PredefinedPage() {
                 <div className="mb-2">
                   <LogoIcon logoId={l.id} letter="A" size={48} color="#3b82f6" />
                 </div>
-                <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono">{l.id}</code>
+                <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded text-[#0e0f0c] font-mono">{l.id}</code>
                 <h3 className="font-semibold text-xs text-gray-900 mt-1 text-center">{l.name}</h3>
                 <p className="text-[10px] text-gray-500 text-center mt-0.5">{l.bestFor}</p>
               </div>

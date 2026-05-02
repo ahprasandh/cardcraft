@@ -62,10 +62,10 @@ export default function FindPrintersStep() {
           <button
             onClick={handleProceed}
             disabled={!selectedPrinter}
-            className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl font-semibold text-xs transition-all ${
+            className={`flex items-center gap-1.5 px-5 py-2.5 rounded-full font-semibold text-xs transition-all ${
               selectedPrinter
-                ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-200"
-                : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                ? "bg-[#9fe870] text-[#163300] hover:bg-[#cdffad] hover:scale-[1.02] active:scale-[0.98]"
+                : "bg-[#0e0f0c]/8 text-[#868685] cursor-not-allowed"
             }`}
           >
             Place Order <ArrowRight size={13} />
@@ -102,8 +102,8 @@ export default function FindPrintersStep() {
                   p-5 rounded-xl border-2 cursor-pointer transition-all duration-200
                   ${
                     selectedPrinter?.id === printer.id
-                      ? "border-blue-500 bg-blue-50 shadow-lg shadow-blue-100"
-                      : "border-gray-100 bg-white hover:border-gray-300 hover:shadow-md"
+                      ? "border-[#9fe870] bg-[#9fe870]/8"
+                      : "border-[#0e0f0c]/12 bg-white hover:border-[#0e0f0c]/24"
                   }
                 `}
               >

@@ -1,0 +1,91 @@
+{
+  "id": "stacked-display",
+  "name": "Stacked Display",
+  "description": "Full-width display name spanning the card. Everything else is subordinate. Maximum impact.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.backgroundAlt",
+  "elements": [
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 16,
+      "source": "cardInfo.name",
+      "fontSize": "display",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.5,
+      "textTransform": "uppercase",
+      "color": "palette.onAlt",
+      "splitWordsToLines": true
+    },
+    {
+      "id": "accent-line",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 105,
+      "width": 40,
+      "height": 2,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 20,
+      "y": 118,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 20,
+      "y": 134,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1,
+      "textTransform": "uppercase",
+      "color": "palette.accent"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 20,
+      "y": 164,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 170,
+      "y": 164,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 20,
+      "y": 178,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt",
+      "hideIfEmpty": true
+    }
+  ]
+}

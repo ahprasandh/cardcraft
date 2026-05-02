@@ -1,0 +1,17 @@
+{
+  "id": "two-tone-split",
+  "name": "Two-Tone Split",
+  "description": "45/55 horizontal split — colored top section with the name and title-plus-company, white bottom for tagline and contacts.",
+  "card": { "width": 350, "height": 200 },
+  "background": "palette.background",
+  "elements": [
+    { "id": "top-section", "type": "shape", "shape": "rect", "x": 0, "y": 0, "width": 350, "height": 90, "fill": "palette.backgroundAlt" },
+    { "id": "name",        "type": "text",  "x": 20, "y": 50, "source": "cardInfo.name", "fontSize": "heading", "fontWeight": "bold", "fontFamily": "design.font", "color": "palette.onAlt" },
+    { "id": "title-line",  "type": "text",  "x": 20, "y": 72, "template": "{title} · {company}", "fontSize": "body", "fontFamily": "design.font", "color": "palette.accent" },
+    { "id": "tagline",     "type": "text",  "x": 20, "y": 110, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic", "fontFamily": "design.font", "color": "palette.secondary", "hideIfEmpty": true },
+    { "id": "email",       "type": "text",  "x": 20, "y": 130, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "phone",       "type": "text",  "x": 20, "y": 142, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
+    { "id": "website",     "type": "text",  "x": 20, "y": 154, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
+    { "id": "address",     "type": "text",  "x": 20, "y": 166, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true }
+  ]
+}
