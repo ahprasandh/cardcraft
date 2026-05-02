@@ -1,0 +1,181 @@
+{
+  "id": "retro-vintage",
+  "name": "Retro Vintage",
+  "description": "Decorative double-line bands at the top and bottom with old-style centered typography between.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "top-line-1",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 22,
+      "width": 310,
+      "height": 2,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "top-line-2",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 27,
+      "width": 310,
+      "height": 1,
+      "fill": "palette.accent",
+      "opacity": 0.4
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 175,
+      "y": 32,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "letterSpacing": 2.4,
+      "textTransform": "uppercase",
+      "color": "palette.accent",
+      "alignment": "center"
+    },
+    {
+      "id": "top-line-3",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 42,
+      "width": 310,
+      "height": 1,
+      "fill": "palette.accent",
+      "opacity": 0.4
+    },
+    {
+      "id": "top-line-4",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 45,
+      "width": 310,
+      "height": 2,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 175,
+      "y": 70,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 0.5,
+      "color": "palette.primary",
+      "alignment": "center"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 175,
+      "y": 94,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.secondary",
+      "alignment": "center"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 175,
+      "y": 110,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "bot-line-1",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 130,
+      "width": 310,
+      "height": 2,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "bot-line-2",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 135,
+      "width": 310,
+      "height": 1,
+      "fill": "palette.accent",
+      "opacity": 0.4
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 175,
+      "y": 144,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 175,
+      "y": 156,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 175,
+      "y": 168,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "bot-line-3",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 178,
+      "width": 310,
+      "height": 1,
+      "fill": "palette.accent",
+      "opacity": 0.4
+    },
+    {
+      "id": "bot-line-4",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 181,
+      "width": 310,
+      "height": 2,
+      "fill": "palette.accent"
+    }
+  ]
+}

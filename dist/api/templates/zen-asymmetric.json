@@ -1,0 +1,95 @@
+{
+  "id": "zen-asymmetric",
+  "name": "Zen Asymmetric",
+  "description": "Extreme whitespace with all content anchored to the bottom-right. Calm and confident.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "company",
+      "type": "text",
+      "x": 326,
+      "y": 60,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 2,
+      "textTransform": "uppercase",
+      "color": "palette.secondary",
+      "alignment": "right"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 326,
+      "y": 90,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.primary",
+      "alignment": "right"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 326,
+      "y": 114,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right"
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 306,
+      "y": 138,
+      "width": 24,
+      "height": 1,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 326,
+      "y": 150,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 326,
+      "y": 162,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 326,
+      "y": 174,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right",
+      "hideIfEmpty": true
+    }
+  ]
+}

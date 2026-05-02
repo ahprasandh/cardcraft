@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CardCraft API</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; max-width: 880px; margin: 32px auto; padding: 0 24px; color: #1f2937; background: #f9fafb; }
+  h1 { margin: 0 0 4px; }
+  .lede { color: #6b7280; margin-top: 0; font-size: 14px; }
+  .endpoint { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+  .endpoint h2 { margin: 0 0 6px; font-size: 16px; }
+  .endpoint p { margin: 6px 0; color: #4b5563; font-size: 14px; }
+  .endpoint a { color: #2563eb; text-decoration: none; font-family: ui-monospace, monospace; font-size: 13px; }
+  .endpoint a:hover { text-decoration: underline; }
+  pre { background: #f3f4f6; padding: 10px 14px; border-radius: 6px; overflow-x: auto; font-size: 12px; margin: 8px 0 0; }
+  .meta { color: #9ca3af; font-size: 12px; margin-top: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 4px 16px; margin-top: 8px; }
+  .grid a { font-size: 12px; }
+  .top { display: flex; align-items: baseline; gap: 12px; }
+  .top a { font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>CardCraft API</h1>
+  <a href="/">← back to webapp</a>
+</div>
+<p class="lede">Static JSON tree generated from <code>core/</code>. Same origin as the webapp.</p>
+
+<div class="endpoint">
+  <h2><a href="/api/manifest.json">/api/manifest.json</a></h2>
+  <p>Agent contract — LLM prompt template, tag vocabulary, apply rules, resource paths.</p>
+  <pre>curl http://localhost:3000/api/manifest.json</pre>
+</div>
+
+<div class="endpoint">
+  <h2><a href="/api/catalog.json">/api/catalog.json</a></h2>
+  <p>52 templates with metadata and industry/style/mood/density tags.</p>
+  <pre>curl http://localhost:3000/api/catalog.json | jq '.templates[0]'</pre>
+</div>
+
+<div class="endpoint">
+  <h2><a href="/api/palettes.json">/api/palettes.json</a></h2>
+  <p>14 named color palettes with mood tags.</p>
+  <pre>curl http://localhost:3000/api/palettes.json | jq '.palettes[].name'</pre>
+</div>
+
+<div class="endpoint">
+  <h2>/api/templates/&lt;id&gt;.json</h2>
+  <p>Per-template render spec — flat array of positioned elements.</p>
+  <pre>curl http://localhost:3000/api/templates/minimal-clean.json</pre>
+  <div class="meta">All 52 templates:</div>
+  <div class="grid">
+    <a href="/api/templates/minimal-clean.json">minimal-clean</a>
+    <a href="/api/templates/split-sidebar.json">split-sidebar</a>
+    <a href="/api/templates/centered-classic.json">centered-classic</a>
+    <a href="/api/templates/modern-left.json">modern-left</a>
+    <a href="/api/templates/elegant-serif.json">elegant-serif</a>
+    <a href="/api/templates/stacked-bold.json">stacked-bold</a>
+    <a href="/api/templates/japanese-minimal.json">japanese-minimal</a>
+    <a href="/api/templates/top-accent.json">top-accent</a>
+    <a href="/api/templates/right-sidebar.json">right-sidebar</a>
+    <a href="/api/templates/vertical-split.json">vertical-split</a>
+    <a href="/api/templates/two-tone-split.json">two-tone-split</a>
+    <a href="/api/templates/magazine-editorial.json">magazine-editorial</a>
+    <a href="/api/templates/offset-minimal.json">offset-minimal</a>
+    <a href="/api/templates/asymmetric-blocks.json">asymmetric-blocks</a>
+    <a href="/api/templates/corner-frame.json">corner-frame</a>
+    <a href="/api/templates/retro-vintage.json">retro-vintage</a>
+    <a href="/api/templates/three-column.json">three-column</a>
+    <a href="/api/templates/edge-info.json">edge-info</a>
+    <a href="/api/templates/dark-gradient.json">dark-gradient</a>
+    <a href="/api/templates/diagonal-accent.json">diagonal-accent</a>
+    <a href="/api/templates/diagonal-split.json">diagonal-split</a>
+    <a href="/api/templates/mono-tech.json">mono-tech</a>
+    <a href="/api/templates/vertical-text.json">vertical-text</a>
+    <a href="/api/templates/brutalist.json">brutalist</a>
+    <a href="/api/templates/floating-name.json">floating-name</a>
+    <a href="/api/templates/wave-divide.json">wave-divide</a>
+    <a href="/api/templates/editorial-type.json">editorial-type</a>
+    <a href="/api/templates/bold-accent.json">bold-accent</a>
+    <a href="/api/templates/swiss-grid.json">swiss-grid</a>
+    <a href="/api/templates/glyph-mark.json">glyph-mark</a>
+    <a href="/api/templates/brutalist-grid.json">brutalist-grid</a>
+    <a href="/api/templates/soft-surface.json">soft-surface</a>
+    <a href="/api/templates/diagonal-modern.json">diagonal-modern</a>
+    <a href="/api/templates/ribbon-minimal.json">ribbon-minimal</a>
+    <a href="/api/templates/zen-asymmetric.json">zen-asymmetric</a>
+    <a href="/api/templates/mono-terminal.json">mono-terminal</a>
+    <a href="/api/templates/wide-band.json">wide-band</a>
+    <a href="/api/templates/two-column-clean.json">two-column-clean</a>
+    <a href="/api/templates/oversized-initial.json">oversized-initial</a>
+    <a href="/api/templates/top-heavy.json">top-heavy</a>
+    <a href="/api/templates/l-frame.json">l-frame</a>
+    <a href="/api/templates/inset-elegant.json">inset-elegant</a>
+    <a href="/api/templates/horizontal-stack.json">horizontal-stack</a>
+    <a href="/api/templates/circle-badge.json">circle-badge</a>
+    <a href="/api/templates/right-accent-bar.json">right-accent-bar</a>
+    <a href="/api/templates/stacked-display.json">stacked-display</a>
+    <a href="/api/templates/orbit.json">orbit</a>
+    <a href="/api/templates/twin-circles.json">twin-circles</a>
+    <a href="/api/templates/corner-block.json">corner-block</a>
+    <a href="/api/templates/half-moon.json">half-moon</a>
+    <a href="/api/templates/stacked-bars.json">stacked-bars</a>
+    <a href="/api/templates/diamond-accent.json">diamond-accent</a>
+  </div>
+</div>
+
+</body>
+</html>

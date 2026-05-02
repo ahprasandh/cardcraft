@@ -1,0 +1,78 @@
+{
+  "id": "orbit",
+  "name": "Orbit",
+  "description": "A large accent circle bleeds off the top-right corner. Content anchors to the left. Bold and distinctive.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.backgroundAlt",
+  "elements": [
+    {
+      "id": "orbit-circle",
+      "type": "shape",
+      "shape": "circle",
+      "x": 210,
+      "y": -60,
+      "radius": 120,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 24,
+      "y": 30,
+      "source": "cardInfo.name",
+      "fontSize": "display",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.5,
+      "color": "palette.onAlt",
+      "splitWordsToLines": true
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 24,
+      "y": 120,
+      "source": "cardInfo.title",
+      "fontSize": "caption",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1,
+      "textTransform": "uppercase",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 24,
+      "y": 136,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 24,
+      "y": 164,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 24,
+      "y": 178,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt",
+      "hideIfEmpty": true
+    }
+  ]
+}

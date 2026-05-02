@@ -1,0 +1,121 @@
+{
+  "id": "diagonal-modern",
+  "name": "Diagonal Modern",
+  "description": "A bold diagonal divide splits the card into two contrasting zones. Asymmetric and dynamic.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "diagonal-fill",
+      "type": "shape",
+      "shape": "polygon",
+      "x": 0,
+      "y": 0,
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 350,
+          "y": 0
+        },
+        {
+          "x": 350,
+          "y": 120
+        },
+        {
+          "x": 0,
+          "y": 200
+        }
+      ],
+      "fill": "palette.backgroundAlt"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 24,
+      "y": 24,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 24,
+      "y": 50,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 24,
+      "y": 68,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 200,
+      "y": 24,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "textTransform": "uppercase",
+      "color": "palette.accent",
+      "alignment": "right"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 200,
+      "y": 152,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 200,
+      "y": 166,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 200,
+      "y": 180,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right",
+      "hideIfEmpty": true
+    }
+  ]
+}

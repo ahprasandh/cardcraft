@@ -1,0 +1,100 @@
+{
+  "id": "magazine-editorial",
+  "name": "Magazine Editorial",
+  "description": "Oversized name as the hero, supporting details cascading below. Editorial whitespace, tracked uppercase title.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 60,
+      "source": "cardInfo.name",
+      "fontSize": 28,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.8,
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 20,
+      "y": 100,
+      "source": "cardInfo.title",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "letterSpacing": 2,
+      "textTransform": "uppercase",
+      "color": "palette.accent"
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 116,
+      "width": 40,
+      "height": 2,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 20,
+      "y": 124,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "medium",
+      "fontFamily": "design.font",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 20,
+      "y": 136,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 20,
+      "y": 152,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 20,
+      "y": 164,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 20,
+      "y": 176,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    }
+  ]
+}

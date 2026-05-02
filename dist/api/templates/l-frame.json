@@ -1,0 +1,100 @@
+{
+  "id": "l-frame",
+  "name": "L-Frame",
+  "description": "An accent-colored L-shape frames the top-left corner. Content flows down the right.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "l-top",
+      "type": "shape",
+      "shape": "rect",
+      "x": 0,
+      "y": 0,
+      "width": 8,
+      "height": 200,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "l-bottom",
+      "type": "shape",
+      "shape": "rect",
+      "x": 0,
+      "y": 192,
+      "width": 140,
+      "height": 8,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 28,
+      "y": 28,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 28,
+      "y": 52,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 28,
+      "y": 68,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1,
+      "textTransform": "uppercase",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 28,
+      "y": 110,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 28,
+      "y": 124,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 28,
+      "y": 138,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.primary",
+      "hideIfEmpty": true
+    }
+  ]
+}

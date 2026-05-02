@@ -1,0 +1,108 @@
+{
+  "id": "asymmetric-blocks",
+  "name": "Asymmetric Blocks",
+  "description": "Solid color block in the top-left corner with the rest of the card flowing around it. Bold and geometric.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "accent-block",
+      "type": "shape",
+      "shape": "rect",
+      "x": 0,
+      "y": 0,
+      "width": 140,
+      "height": 80,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 158,
+      "y": 76,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 158,
+      "y": 98,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 158,
+      "y": 112,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "medium",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 158,
+      "y": 124,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 20,
+      "y": 158,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 20,
+      "y": 170,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 180,
+      "y": 158,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "x": 180,
+      "y": 170,
+      "source": "cardInfo.address",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    }
+  ]
+}

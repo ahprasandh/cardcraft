@@ -1,0 +1,160 @@
+{
+  "id": "swiss-grid",
+  "name": "Swiss Grid",
+  "description": "Modernist grid with labeled fields in three columns. Clean, credible, professional without being corporate.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "company",
+      "type": "text",
+      "x": 24,
+      "y": 20,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 2,
+      "textTransform": "uppercase",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "rule-top",
+      "type": "shape",
+      "shape": "line",
+      "x": 24,
+      "y": 36,
+      "x2": 326,
+      "y2": 36,
+      "stroke": "palette.accent",
+      "strokeWidth": 1
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 24,
+      "y": 52,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 24,
+      "y": 76,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 24,
+      "y": 92,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.secondary",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "rule-bottom",
+      "type": "shape",
+      "shape": "line",
+      "x": 24,
+      "y": 120,
+      "x2": 326,
+      "y2": 120,
+      "stroke": "palette.accent",
+      "strokeWidth": 0.5
+    },
+    {
+      "id": "email-label",
+      "type": "text",
+      "x": 24,
+      "y": 130,
+      "text": "EMAIL",
+      "fontSize": 6,
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "color": "palette.secondary"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 24,
+      "y": 140,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone-label",
+      "type": "text",
+      "x": 135,
+      "y": 130,
+      "text": "PHONE",
+      "fontSize": 6,
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "color": "palette.secondary"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 135,
+      "y": 140,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "web-label",
+      "type": "text",
+      "x": 246,
+      "y": 130,
+      "text": "WEB",
+      "fontSize": 6,
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "color": "palette.secondary"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 246,
+      "y": 140,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "x": 24,
+      "y": 164,
+      "source": "cardInfo.address",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    }
+  ]
+}

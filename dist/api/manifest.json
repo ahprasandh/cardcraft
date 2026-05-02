@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "promptTemplate": "Classify this business for card design: \"{{businessDescription}}\"{{designExpectationsClause}}\n\n1. Pick the best-matching tags:\n- industry (1-3): tech, finance, legal, healthcare, education, food-dining, creative-agency, real-estate, retail, beauty-wellness, consulting, nonprofit, entertainment, photography, construction\n- style (1-2): minimal, classic, bold, elegant, modern\n- mood (1-2): light, dark, warm, cool\n- density (1): airy, balanced, compact\n\n2. Create 8 color palettes that match the business and style preference. Each palette has 6 hex colors:\n- primary: main heading color\n- secondary: subheading/detail color\n- accent: highlights, borders, icons\n- background: card background\n- backgroundAlt: contrasting section background\n- text: body text color\n\nRules: vary the 8 palettes (don't repeat), ensure text readable on background, honor any color preferences.\n\nReturn JSON only:\n{\"tags\":{\"industry\":[\"...\"],\"style\":[\"...\"],\"mood\":[\"...\"],\"density\":[\"...\"]},\"palettes\":[{\"primary\":\"#hex\",\"secondary\":\"#hex\",\"accent\":\"#hex\",\"background\":\"#hex\",\"backgroundAlt\":\"#hex\",\"text\":\"#hex\"},...7 more]}",
+  "tagVocabulary": {
+    "industry": [
+      "tech",
+      "finance",
+      "legal",
+      "healthcare",
+      "education",
+      "food-dining",
+      "creative-agency",
+      "real-estate",
+      "retail",
+      "beauty-wellness",
+      "consulting",
+      "nonprofit",
+      "entertainment",
+      "photography",
+      "construction"
+    ],
+    "style": [
+      "minimal",
+      "classic",
+      "bold",
+      "elegant",
+      "modern"
+    ],
+    "mood": [
+      "light",
+      "dark",
+      "warm",
+      "cool"
+    ],
+    "density": [
+      "airy",
+      "balanced",
+      "compact"
+    ]
+  },
+  "applyRules": "\nGiven the LLM output:\n\n1. Validate tags against TAG_VOCABULARY. Drop any unknown values.\n2. Score each spec in the catalog by tag overlap. Catalog entries are\n   pre-tagged in templates-registry.ts; the score is the sum of:\n     - matching industry tags (weight 3)\n     - matching style tags (weight 2)\n     - matching mood tags (weight 1)\n     - matching density tags (weight 1)\n3. Take the top 8 specs by score, breaking ties by templateId order.\n4. For each picked spec, overlay one of the LLM's 8 palettes (in order).\n5. Render each (spec, palette) pair to produce 8 candidate cards.\n\nFor single-card flows (e.g. \"make me one card\"), the agent should pick\nthe highest-scoring spec + first palette.\n",
+  "resources": {
+    "catalog": "/api/catalog.json",
+    "palettes": "/api/palettes.json",
+    "templates": "/api/templates/{id}.json"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "id": "stacked-bold",
+  "name": "Stacked Bold",
+  "description": "Oversized bold name as the hero element, with title and contacts below.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 47,
+      "source": "cardInfo.name",
+      "fontSize": "display",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.5,
+      "textTransform": "uppercase",
+      "color": "palette.accent"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 20,
+      "y": 78,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontWeight": "medium",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.2,
+      "textTransform": "uppercase",
+      "color": "palette.primary"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 20,
+      "y": 94,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 20,
+      "y": 108,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.accent",
+      "opacity": 0.7,
+      "hideIfEmpty": true
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 122,
+      "width": 310,
+      "height": 2,
+      "fill": "palette.accent",
+      "opacity": 0.3
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 20,
+      "y": 130,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 20,
+      "y": 142,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 20,
+      "y": 154,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "x": 20,
+      "y": 166,
+      "source": "cardInfo.address",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    }
+  ]
+}

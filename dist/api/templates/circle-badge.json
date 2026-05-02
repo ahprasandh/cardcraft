@@ -1,0 +1,112 @@
+{
+  "id": "circle-badge",
+  "name": "Circle Badge",
+  "description": "A bold circle badge with the company initial. Formal and distinctive.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "badge-bg",
+      "type": "shape",
+      "shape": "circle",
+      "x": 20,
+      "y": 40,
+      "radius": 48,
+      "fill": "palette.backgroundAlt"
+    },
+    {
+      "id": "monogram",
+      "type": "text",
+      "x": 66,
+      "y": 60,
+      "source": "cardInfo.company",
+      "fontSize": 36,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt",
+      "alignment": "center",
+      "firstChar": true
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 136,
+      "y": 44,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 136,
+      "y": 68,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 136,
+      "y": 84,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1,
+      "textTransform": "uppercase",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 136,
+      "y": 108,
+      "width": 24,
+      "height": 1,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 136,
+      "y": 120,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 136,
+      "y": 134,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 136,
+      "y": 148,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.primary",
+      "hideIfEmpty": true
+    }
+  ]
+}

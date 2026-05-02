@@ -1,0 +1,106 @@
+{
+  "id": "editorial-type",
+  "name": "Editorial Type",
+  "description": "Type-as-design. Large lowercase name anchors the card; details frame the edges. No decorative elements — hierarchy does the work.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "company",
+      "type": "text",
+      "x": 20,
+      "y": 18,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "textTransform": "uppercase",
+      "color": "palette.text"
+    },
+    {
+      "id": "serial",
+      "type": "text",
+      "x": 290,
+      "y": 18,
+      "text": "No. 001",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 0.5,
+      "color": "palette.secondary",
+      "alignment": "right"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 68,
+      "source": "cardInfo.name",
+      "fontSize": "display",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.5,
+      "textTransform": "lowercase",
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 20,
+      "y": 160,
+      "source": "cardInfo.title",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "company2",
+      "type": "text",
+      "x": 20,
+      "y": 172,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 200,
+      "y": 160,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 200,
+      "y": 172,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 200,
+      "y": 184,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "id": "centered-classic",
+  "name": "Centered Classic",
+  "description": "Everything centered around thin dividers — symmetrical and timeless.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "name",
+      "type": "text",
+      "x": 175,
+      "y": 45,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 0.5,
+      "textTransform": "uppercase",
+      "color": "palette.primary",
+      "alignment": "center"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 175,
+      "y": 68,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "letterSpacing": 0.6,
+      "color": "palette.secondary",
+      "alignment": "center"
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 155,
+      "y": 85,
+      "width": 40,
+      "height": 1,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 175,
+      "y": 90,
+      "source": "cardInfo.company",
+      "fontSize": "body",
+      "fontWeight": "medium",
+      "fontFamily": "design.font",
+      "color": "palette.primary",
+      "alignment": "center"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 175,
+      "y": 106,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 175,
+      "y": 122,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 175,
+      "y": 134,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 175,
+      "y": 146,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "x": 175,
+      "y": 158,
+      "source": "cardInfo.address",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center",
+      "hideIfEmpty": true
+    }
+  ]
+}

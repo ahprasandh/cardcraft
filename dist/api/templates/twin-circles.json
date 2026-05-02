@@ -1,0 +1,110 @@
+{
+  "id": "twin-circles",
+  "name": "Twin Circles",
+  "description": "Two overlapping accent circles create a venn-diagram motif. Playful and modern.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "circle-1",
+      "type": "shape",
+      "shape": "circle",
+      "x": 200,
+      "y": 20,
+      "radius": 70,
+      "fill": "palette.backgroundAlt",
+      "opacity": 0.6
+    },
+    {
+      "id": "circle-2",
+      "type": "shape",
+      "shape": "circle",
+      "x": 250,
+      "y": 60,
+      "radius": 70,
+      "fill": "palette.accent",
+      "opacity": 0.3
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 24,
+      "y": 18,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "textTransform": "uppercase",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 24,
+      "y": 42,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 24,
+      "y": 66,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 24,
+      "y": 96,
+      "width": 24,
+      "height": 1,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 24,
+      "y": 112,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 24,
+      "y": 126,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 24,
+      "y": 140,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.primary",
+      "hideIfEmpty": true
+    }
+  ]
+}

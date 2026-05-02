@@ -1,0 +1,117 @@
+{
+  "id": "inset-elegant",
+  "name": "Inset Elegant",
+  "description": "A thin border inset creates a card-within-a-card. Centered content feels premium.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.backgroundAlt",
+  "elements": [
+    {
+      "id": "outer-frame",
+      "type": "shape",
+      "shape": "rect",
+      "x": 12,
+      "y": 12,
+      "width": 326,
+      "height": 176,
+      "fill": "palette.background",
+      "cornerRadius": 0
+    },
+    {
+      "id": "inner-border",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 20,
+      "width": 310,
+      "height": 160,
+      "stroke": "palette.accent",
+      "strokeWidth": 0.5
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 175,
+      "y": 36,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 2,
+      "textTransform": "uppercase",
+      "color": "palette.secondary",
+      "alignment": "center"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 175,
+      "y": 62,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.primary",
+      "alignment": "center"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 175,
+      "y": 86,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center"
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 160,
+      "y": 108,
+      "width": 30,
+      "height": 0.5,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 175,
+      "y": 120,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 175,
+      "y": 134,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 175,
+      "y": 148,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center",
+      "hideIfEmpty": true
+    }
+  ]
+}

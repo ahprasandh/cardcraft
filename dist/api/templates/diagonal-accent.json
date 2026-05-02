@@ -1,0 +1,127 @@
+{
+  "id": "diagonal-accent",
+  "name": "Diagonal Accent",
+  "description": "A rotated accent diamond peeks into the top-right corner over a clean centered content stack.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "diamond",
+      "type": "shape",
+      "shape": "polygon",
+      "x": 310,
+      "y": 0,
+      "points": [
+        {
+          "x": 40,
+          "y": -20
+        },
+        {
+          "x": 100,
+          "y": 40
+        },
+        {
+          "x": 40,
+          "y": 100
+        },
+        {
+          "x": -20,
+          "y": 40
+        }
+      ],
+      "fill": "palette.accent",
+      "opacity": 0.15
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 20,
+      "y": 50,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "medium",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.2,
+      "textTransform": "uppercase",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 70,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 20,
+      "y": 92,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 20,
+      "y": 106,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 20,
+      "y": 124,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 20,
+      "y": 136,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 20,
+      "y": 148,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "x": 20,
+      "y": 160,
+      "source": "cardInfo.address",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    }
+  ]
+}

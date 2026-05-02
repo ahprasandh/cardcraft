@@ -1,0 +1,103 @@
+{
+  "id": "corner-block",
+  "name": "Corner Block",
+  "description": "A bold accent square anchors the bottom-right. Content sits in the open space. Architectural.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "block",
+      "type": "shape",
+      "shape": "rect",
+      "x": 220,
+      "y": 80,
+      "width": 130,
+      "height": 120,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 24,
+      "y": 18,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "textTransform": "uppercase",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 24,
+      "y": 40,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 24,
+      "y": 64,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 24,
+      "y": 110,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 24,
+      "y": 124,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 24,
+      "y": 138,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.primary",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "monogram",
+      "type": "text",
+      "x": 285,
+      "y": 110,
+      "source": "cardInfo.company",
+      "fontSize": 48,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.onAccent",
+      "alignment": "center",
+      "firstChar": true
+    }
+  ]
+}

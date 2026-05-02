@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+  <!-- Rounded near-black tile so the mark reads on both light and dark browser tabs -->
+  <rect width="36" height="36" rx="7" fill="#0e0f0c"/>
+  <!-- Open-card C edge -->
+  <path d="M28 6H10C6.7 6 4 8.7 4 12v12c0 3.3 2.7 6 6 6h18" stroke="#9fe870" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Subtle accent rectangle -->
+  <rect x="22" y="10" width="12" height="16" rx="2" fill="#9fe870" opacity="0.2"/>
+</svg>

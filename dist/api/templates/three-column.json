@@ -1,0 +1,122 @@
+{
+  "id": "three-column",
+  "name": "Three Column",
+  "description": "Card split into three equal columns separated by faint accent rules — name on the left, company in the middle, contacts on the right.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "rule-1",
+      "type": "shape",
+      "shape": "rect",
+      "x": 116.67,
+      "y": 20,
+      "width": 1,
+      "height": 160,
+      "fill": "palette.accent",
+      "opacity": 0.2
+    },
+    {
+      "id": "rule-2",
+      "type": "shape",
+      "shape": "rect",
+      "x": 233.33,
+      "y": 20,
+      "width": 1,
+      "height": 160,
+      "fill": "palette.accent",
+      "opacity": 0.2
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 16,
+      "y": 82,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 16,
+      "y": 104,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 175,
+      "y": 88,
+      "source": "cardInfo.company",
+      "fontSize": "body",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.primary",
+      "alignment": "center"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 175,
+      "y": 104,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "center",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 253,
+      "y": 76,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 253,
+      "y": 88,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 253,
+      "y": 100,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "x": 253,
+      "y": 112,
+      "source": "cardInfo.address",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    }
+  ]
+}

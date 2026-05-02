@@ -1,0 +1,122 @@
+{
+  "id": "stacked-bars",
+  "name": "Stacked Bars",
+  "description": "Three accent bars of decreasing width create a rhythmic visual motif on the right. Dynamic and energetic.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "bar-1",
+      "type": "shape",
+      "shape": "rect",
+      "x": 220,
+      "y": 30,
+      "width": 130,
+      "height": 8,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "bar-2",
+      "type": "shape",
+      "shape": "rect",
+      "x": 250,
+      "y": 50,
+      "width": 100,
+      "height": 8,
+      "fill": "palette.accent",
+      "opacity": 0.6
+    },
+    {
+      "id": "bar-3",
+      "type": "shape",
+      "shape": "rect",
+      "x": 280,
+      "y": 70,
+      "width": 70,
+      "height": 8,
+      "fill": "palette.accent",
+      "opacity": 0.3
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 24,
+      "y": 28,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 24,
+      "y": 52,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 24,
+      "y": 68,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1,
+      "textTransform": "uppercase",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 24,
+      "y": 100,
+      "width": 24,
+      "height": 1,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 24,
+      "y": 114,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 24,
+      "y": 128,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 24,
+      "y": 142,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.primary",
+      "hideIfEmpty": true
+    }
+  ]
+}

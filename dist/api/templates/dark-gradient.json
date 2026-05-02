@@ -1,0 +1,83 @@
+{
+  "id": "dark-gradient",
+  "name": "Dark Gradient",
+  "description": "Diagonal gradient background sweeping from background to backgroundAlt with content anchored at the bottom.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": {
+    "type": "gradient",
+    "from": "palette.background",
+    "to": "palette.backgroundAlt",
+    "angle": 135
+  },
+  "elements": [
+    {
+      "id": "company",
+      "type": "text",
+      "x": 20,
+      "y": 22,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "medium",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.2,
+      "textTransform": "uppercase",
+      "color": "palette.text"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 116,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 20,
+      "y": 138,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 20,
+      "y": 154,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 20,
+      "y": 172,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 200,
+      "y": 172,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    }
+  ]
+}

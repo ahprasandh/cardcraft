@@ -1,0 +1,148 @@
+{
+  "id": "brutalist-grid",
+  "name": "Brutalist Grid",
+  "description": "Hard rules divide the card into four named zones. Memorable and opinionated — not for everyone, but unforgettable.",
+  "card": {
+    "width": 350,
+    "height": 200
+  },
+  "background": "palette.background",
+  "elements": [
+    {
+      "id": "grid-h",
+      "type": "shape",
+      "shape": "line",
+      "x": 0,
+      "y": 100,
+      "x2": 350,
+      "y2": 100,
+      "stroke": "palette.primary",
+      "strokeWidth": 1
+    },
+    {
+      "id": "grid-v",
+      "type": "shape",
+      "shape": "line",
+      "x": 175,
+      "y": 0,
+      "x2": 175,
+      "y2": 200,
+      "stroke": "palette.primary",
+      "strokeWidth": 1
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 14,
+      "y": 16,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.3,
+      "textTransform": "uppercase",
+      "color": "palette.primary"
+    },
+    {
+      "id": "accent-block",
+      "type": "shape",
+      "shape": "rect",
+      "x": 175,
+      "y": 0,
+      "width": 175,
+      "height": 100,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "role-label",
+      "type": "text",
+      "x": 187,
+      "y": 14,
+      "text": "ROLE",
+      "fontSize": 6,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "color": "palette.onAccent"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 187,
+      "y": 30,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.onAccent"
+    },
+    {
+      "id": "company-label",
+      "type": "text",
+      "x": 14,
+      "y": 108,
+      "text": "STUDIO",
+      "fontSize": 6,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.5,
+      "color": "palette.secondary"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 14,
+      "y": 122,
+      "source": "cardInfo.company",
+      "fontSize": 14,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "textTransform": "uppercase",
+      "letterSpacing": -0.2,
+      "color": "palette.primary"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 187,
+      "y": 112,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 187,
+      "y": 126,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 187,
+      "y": 140,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "x": 187,
+      "y": 154,
+      "source": "cardInfo.address",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    }
+  ]
+}
