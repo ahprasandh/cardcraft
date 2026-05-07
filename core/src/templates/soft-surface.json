@@ -2,14 +2,91 @@
   "id": "soft-surface",
   "name": "Soft Surface",
   "description": "Single tinted background surface with an oversized name and minimal detail. Hard to ruin — works across all palettes.",
-  "card": { "width": 350, "height": 200 },
+  "card": {
+    "width": 350,
+    "height": 200
+  },
   "background": "palette.backgroundAlt",
   "elements": [
-    { "id": "name", "type": "text", "x": 28, "y": 28, "source": "cardInfo.name", "fontSize": "display", "fontWeight": "bold", "fontFamily": "design.font", "letterSpacing": -0.5, "color": "palette.onAlt", "splitWordsToLines": true },
-    { "id": "company", "type": "text", "x": 28, "y": 148, "source": "cardInfo.company", "fontSize": "body", "fontWeight": "bold", "fontFamily": "design.font", "color": "palette.onAlt" },
-    { "id": "title", "type": "text", "x": 28, "y": 164, "source": "cardInfo.title", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.onAlt" },
-    { "id": "email", "type": "text", "x": 200, "y": 152, "source": "cardInfo.email", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.onAlt", "alignment": "right" },
-    { "id": "phone", "type": "text", "x": 200, "y": 166, "source": "cardInfo.phone", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.onAlt", "alignment": "right", "hideIfEmpty": true },
-    { "id": "website", "type": "text", "x": 200, "y": 180, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.onAlt", "alignment": "right", "hideIfEmpty": true }
+    {
+      "id": "name",
+      "type": "text",
+      "x": 28,
+      "y": 28,
+      "source": "cardInfo.name",
+      "fontSize": "display",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "letterSpacing": -0.5,
+      "color": "palette.onAlt",
+      "splitWordsToLines": true
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 28,
+      "y": 148,
+      "source": "cardInfo.company",
+      "fontSize": "body",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 28,
+      "y": 164,
+      "source": "cardInfo.title",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 200,
+      "y": 152,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt",
+      "alignment": "right"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 200,
+      "y": 166,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt",
+      "alignment": "right",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 200,
+      "y": 180,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt",
+      "alignment": "right",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "x": 290,
+      "y": 12,
+      "width": 60,
+      "height": 24,
+      "source": "cardInfo.customLogoUrl",
+      "fit": "contain",
+      "hideIfEmpty": true
+    }
   ]
 }

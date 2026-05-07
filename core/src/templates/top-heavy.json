@@ -85,6 +85,17 @@
       "color": "palette.text",
       "alignment": "right",
       "hideIfEmpty": true
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "x": 290,
+      "y": 12,
+      "width": 60,
+      "height": 24,
+      "source": "cardInfo.customLogoUrl",
+      "fit": "contain",
+      "hideIfEmpty": true
     }
   ]
 }

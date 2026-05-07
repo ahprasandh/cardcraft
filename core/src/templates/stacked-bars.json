@@ -117,6 +117,17 @@
       "fontFamily": "design.font",
       "color": "palette.primary",
       "hideIfEmpty": true
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "x": 290,
+      "y": 100,
+      "width": 60,
+      "height": 24,
+      "source": "cardInfo.customLogoUrl",
+      "fit": "contain",
+      "hideIfEmpty": true
     }
   ]
 }

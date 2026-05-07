@@ -5,6 +5,7 @@ declare global {
   interface Window { domtoimage: { toPng: (node: HTMLElement, opts?: Record<string, unknown>) => Promise<string> } }
 }
 import { useWizardStore } from "@/lib/store";
+import { queryOllama } from "@/lib/ollama-client";
 import BusinessCard from "@/components/BusinessCard";
 import BusinessCardBack from "@/components/BusinessCardBack";
 import { PATTERNS, getPatternSVG } from "@/lib/patterns";
@@ -442,19 +443,7 @@ Example: ["Designing the future", "Code that matters", "Your vision, built", "St
 
 JSON array:`;
 
-      const res = await fetch("http://hari-3035-macstudio.csez.zohocorpin.com:11434/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "qwen3.6:35b",
-          messages: [{ role: "user", content: prompt }],
-          stream: false,
-          think: false,
-          options: { temperature: 0.7, num_predict: 256 },
-        }),
-      });
-      const data = await res.json();
-      const content = data?.message?.content || "";
+      const content = await queryOllama(prompt, { maxTokens: 256, temperature: 0.7 });
       const jsonMatch = content.match(/\[[\s\S]*?\]/);
       if (!jsonMatch) { setTaglineSuggestions(defaults); setIsLoadingTaglines(false); return; }
       const taglines: string[] = JSON.parse(jsonMatch[0]);

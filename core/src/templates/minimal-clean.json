@@ -2,17 +2,120 @@
   "id": "minimal-clean",
   "name": "Minimal Clean",
   "description": "Spacious left-aligned vertical layout with a thin accent divider. Generous whitespace.",
-  "card": { "width": 350, "height": 200 },
+  "card": {
+    "width": 350,
+    "height": 200
+  },
   "background": "palette.background",
   "elements": [
-    { "id": "company",  "type": "text",  "x": 20, "y": 48,  "source": "cardInfo.company", "fontSize": "caption", "fontWeight": "medium",   "fontFamily": "design.font", "letterSpacing": 1.2, "textTransform": "uppercase", "color": "palette.text" },
-    { "id": "name",     "type": "text",  "x": 20, "y": 60,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "semibold", "fontFamily": "design.font", "color": "palette.primary" },
-    { "id": "title",    "type": "text",  "x": 20, "y": 84,  "source": "cardInfo.title",   "fontSize": "body",                              "fontFamily": "design.font", "color": "palette.secondary" },
-    { "id": "tagline",  "type": "text",  "x": 20, "y": 100, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic",   "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
-    { "id": "divider",  "type": "shape", "shape": "rect", "x": 20, "y": 114, "width": 32, "height": 1, "fill": "palette.accent" },
-    { "id": "email",    "type": "text",  "x": 20, "y": 120, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
-    { "id": "phone",    "type": "text",  "x": 20, "y": 132, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
-    { "id": "website",  "type": "text",  "x": 20, "y": 144, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
-    { "id": "address",  "type": "text",  "x": 20, "y": 156, "source": "cardInfo.address", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true }
+    {
+      "id": "company",
+      "type": "text",
+      "x": 20,
+      "y": 48,
+      "source": "cardInfo.company",
+      "fontSize": "caption",
+      "fontWeight": "medium",
+      "fontFamily": "design.font",
+      "letterSpacing": 1.2,
+      "textTransform": "uppercase",
+      "color": "palette.text"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 60,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "semibold",
+      "fontFamily": "design.font",
+      "color": "palette.primary"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 20,
+      "y": 84,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 20,
+      "y": 100,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 114,
+      "width": 32,
+      "height": 1,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 20,
+      "y": 120,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 20,
+      "y": 132,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 20,
+      "y": 144,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "x": 20,
+      "y": 156,
+      "source": "cardInfo.address",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "x": 290,
+      "y": 12,
+      "width": 60,
+      "height": 24,
+      "source": "cardInfo.customLogoUrl",
+      "fit": "contain",
+      "hideIfEmpty": true
+    }
   ]
 }

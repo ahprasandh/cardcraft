@@ -4,10 +4,12 @@ import { TEMPLATES, COLOR_THEMES } from "@/lib/designs";
 import { PATTERNS, getPatternSVG } from "@/lib/patterns";
 import { LOGOS, LogoIcon } from "@/lib/logos";
 import { TEMPLATE_CATALOG, type IndustryTag, type StyleTag, type MoodTag, type DensityTag, type CatalogEntry } from "@/lib/template-catalog";
+import { getTemplateSpec } from "@/lib/template-specs";
 import BusinessCard from "@/components/BusinessCard";
 import CardBuilder from "@/components/CardBuilder";
+import ElementToolbar from "@/components/ElementToolbar";
 import Logo from "@/components/Logo";
-import type { CardDesign, CardInfo, TemplateId, PatternPlacement, LogoPlacement } from "@/lib/types";
+import type { CardDesign, CardInfo, TemplateId, PatternPlacement } from "@/lib/types";
 
 const SAMPLE_INFO: CardInfo = {
   name: "James Smith",
@@ -20,7 +22,7 @@ const SAMPLE_INFO: CardInfo = {
   businessDescription: "",
   designExpectations: "",
   tagline: "Design with purpose",
-  customLogoUrl: "",
+  customLogoUrl: "/logo.svg",
 };
 
 const PATTERN_PLACEMENTS: PatternPlacement[] = ["full", "top", "bottom", "left", "right", "top-left", "top-right", "bottom-left", "bottom-right", "diagonal-tl", "diagonal-br"];
@@ -87,6 +89,213 @@ function CatalogCard({ entry, info }: { entry: CatalogEntry; info: CardInfo }) {
   );
 }
 
+/* ── Spec Editor Modal ───────────────────────────────────────────── */
+function SpecEditorModal({ templateId, info, onClose }: { templateId: string; info: CardInfo; onClose: () => void }) {
+  const originalSpec = getTemplateSpec(templateId);
+  const [spec, setSpec] = useState(() => structuredClone(originalSpec!));
+  const [selectedElId, setSelectedElId] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+  const [viewMode, setViewMode] = useState<"visual" | "json">("visual");
+  const [jsonText, setJsonText] = useState(() => JSON.stringify(originalSpec, null, 2));
+  const [jsonError, setJsonError] = useState<string | null>(null);
+
+  // Keep JSON text in sync when spec changes in visual mode
+  useEffect(() => {
+    if (viewMode === "visual") {
+      setJsonText(JSON.stringify(spec, null, 2));
+    }
+  }, [spec, viewMode]);
+
+  // Parse JSON when switching back to visual
+  const switchToVisual = () => {
+    try {
+      const parsed = JSON.parse(jsonText);
+      setSpec(parsed);
+      setJsonError(null);
+      setViewMode("visual");
+    } catch (e: unknown) {
+      setJsonError((e as Error).message);
+    }
+  };
+
+  const selectedEl = spec.elements.find((e: { id: string }) => e.id === selectedElId);
+
+  const updateElement = (id: string, partial: Record<string, unknown>) => {
+    setSpec((prev: typeof spec) => ({
+      ...prev,
+      elements: prev.elements.map((el: { id: string }) =>
+        el.id === id ? { ...el, ...partial } : el
+      ),
+    }));
+  };
+
+  const handleCopy = () => {
+    const text = viewMode === "json" ? jsonText : JSON.stringify(spec, null, 2);
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  // Build a preview design
+  const theme = COLOR_THEMES[0];
+  const design: CardDesign = {
+    id: `editor-${templateId}`,
+    templateId: templateId as TemplateId,
+    name: templateId,
+    reasoning: "",
+    colors: theme.colors,
+    font: "sans",
+    textAlign: "left",
+    spacing: "normal",
+    borderRadius: "medium",
+    pattern: { id: "none", opacity: 0, color: theme.colors.accent, placement: "full" },
+    backgroundEffect: { type: "none", color: theme.colors.accent, opacity: 0, angle: 135 },
+    logo: { id: "none", placement: "top-right", size: "medium" },
+    border: { sides: "none", width: 0, color: theme.colors.accent },
+  };
+
+  // Resolve font size tokens for display
+  const resolveFontSize = (fs: unknown): number => {
+    if (typeof fs === "number") return fs;
+    const map: Record<string, number> = { caption: 8, body: 10, heading: 16, display: 22 };
+    return map[fs as string] ?? 12;
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200">
+          <div className="flex items-center gap-3">
+            <code className="text-sm font-mono font-semibold text-[#0e0f0c]">{templateId}</code>
+            <div className="flex rounded-lg overflow-hidden border border-gray-200">
+              <button onClick={() => setViewMode("visual")}
+                className={`px-3 py-1 text-xs font-medium ${viewMode === "visual" ? "bg-[#0e0f0c] text-[#9fe870]" : "bg-gray-50 text-gray-600 hover:bg-gray-100"}`}>
+                Visual
+              </button>
+              <button onClick={() => viewMode === "json" ? undefined : setViewMode("json")}
+                className={`px-3 py-1 text-xs font-medium ${viewMode === "json" ? "bg-[#0e0f0c] text-[#9fe870]" : "bg-gray-50 text-gray-600 hover:bg-gray-100"}`}>
+                JSON
+              </button>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <button onClick={handleCopy}
+              className="px-3 py-1.5 text-xs rounded-lg bg-[#0e0f0c] text-[#9fe870] hover:bg-[#0e0f0c]/80 transition-colors font-medium">
+              {copied ? "Copied!" : `Export ${templateId}.json`}
+            </button>
+            <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl leading-none">&times;</button>
+          </div>
+        </div>
+
+        {/* Body */}
+        <div className="flex-1 min-h-0 flex">
+          {viewMode === "json" ? (
+            /* JSON editor mode */
+            <div className="flex-1 min-h-0 flex flex-col">
+              {jsonError && (
+                <div className="px-3 py-1.5 bg-red-50 text-red-600 text-xs border-b border-red-100 flex items-center justify-between">
+                  <span className="truncate">{jsonError}</span>
+                  <button onClick={switchToVisual} className="text-xs text-red-700 font-medium ml-2 shrink-0">Fix & switch</button>
+                </div>
+              )}
+              <textarea
+                value={jsonText}
+                onChange={(e) => { setJsonText(e.target.value); setJsonError(null); }}
+                spellCheck={false}
+                className="flex-1 w-full p-4 font-mono text-xs leading-relaxed resize-none focus:outline-none bg-gray-50"
+              />
+              {viewMode === "json" && !jsonError && (
+                <div className="px-4 py-2 border-t border-gray-100 bg-gray-50">
+                  <button onClick={switchToVisual} className="text-xs text-[#0e0f0c] font-medium hover:underline">
+                    ← Apply JSON & switch to Visual
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            /* Visual editor mode */
+            <>
+              {/* Left: Card preview (clickable elements) */}
+              <div className="flex-1 min-h-0 flex flex-col items-center justify-center p-6 bg-gray-100">
+                <div className="mb-3">
+                  <BusinessCard
+                    design={design}
+                    info={info}
+                    size="medium"
+                    specOverride={spec}
+                    editMode
+                    selectedElement={selectedElId as never}
+                    onSelectElement={(id) => setSelectedElId(id)}
+                  />
+                </div>
+                {/* Toolbar below card */}
+                {selectedEl && (
+                  <div className="mt-3 w-full max-w-md">
+                    <ElementToolbar
+                      label={selectedEl.id}
+                      x={selectedEl.x}
+                      y={selectedEl.y}
+                      width={selectedEl.type !== "text" ? selectedEl.width : undefined}
+                      height={selectedEl.type !== "text" ? selectedEl.height : undefined}
+                      fontSize={selectedEl.type === "text" ? resolveFontSize(selectedEl.fontSize) : undefined}
+                      opacity={selectedEl.opacity ?? 1}
+                      sizeMode={selectedEl.type === "text" ? "font" : "dimensions"}
+                      onMove={(dx, dy) => updateElement(selectedEl.id, { x: selectedEl.x + dx, y: selectedEl.y + dy })}
+                      onResize={selectedEl.type === "text" ? (delta) => {
+                        const cur = resolveFontSize(selectedEl.fontSize);
+                        updateElement(selectedEl.id, { fontSize: Math.max(4, cur + delta) });
+                      } : undefined}
+                      onResizeDimensions={selectedEl.type !== "text" ? (dw, dh) => {
+                        updateElement(selectedEl.id, {
+                          width: Math.max(2, (selectedEl.width ?? 0) + dw),
+                          height: Math.max(2, (selectedEl.height ?? 0) + dh),
+                        });
+                      } : undefined}
+                      onOpacityChange={(op) => updateElement(selectedEl.id, { opacity: op })}
+                      onReset={() => {
+                        const orig = originalSpec?.elements.find((e: { id: string }) => e.id === selectedElId);
+                        if (orig) updateElement(selectedElId!, orig);
+                      }}
+                      onClose={() => setSelectedElId(null)}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Right: Elements list */}
+              <div className="w-[280px] flex-shrink-0 border-l border-gray-200 overflow-y-auto p-3">
+                <h3 className="text-xs font-semibold text-gray-600 mb-2">Elements ({spec.elements.length})</h3>
+                <div className="space-y-1">
+                  {spec.elements.map((el: { id: string; type: string; source?: string; text?: string; shape?: string }) => (
+                    <button
+                      key={el.id}
+                      onClick={() => setSelectedElId(el.id)}
+                      className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors flex items-center gap-2 ${
+                        selectedElId === el.id
+                          ? "bg-[#9fe870]/20 text-[#0e0f0c] ring-1 ring-[#9fe870]"
+                          : "hover:bg-gray-100 text-gray-700"
+                      }`}
+                    >
+                      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                        el.type === "text" ? "bg-blue-400" : el.type === "image" ? "bg-green-400" : "bg-gray-400"
+                      }`} />
+                      <span className="font-mono truncate">{el.id}</span>
+                      <span className="text-[10px] text-gray-400 ml-auto shrink-0">
+                        {el.type === "text" ? (el.source?.replace("cardInfo.", "") || el.text?.slice(0, 8) || "text") : el.type === "image" ? "img" : el.shape || "shape"}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ══════════════════════════════════════════════════════════════════ */
 
 export default function PredefinedPage() {
@@ -118,14 +327,7 @@ export default function PredefinedPage() {
   const [catalogPage, setCatalogPage] = useState(0);
 
   // ── Logo position editor state ──────────────────────────────────
-  const ALL_LOGO_PLACEMENTS: LogoPlacement[] = ["top-left", "top-right", "top-center", "center-left", "center", "center-right", "bottom-left", "bottom-right", "bottom-center"];
-  const [logoPositions, setLogoPositions] = useState<Record<string, string>>({});
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("bcard-logo-positions");
-      if (saved) setLogoPositions(JSON.parse(saved));
-    } catch { /* ignore */ }
-  }, []);
+  const [editingTemplate, setEditingTemplate] = useState<string | null>(null);
 
   const filteredCatalog = useMemo(() => {
     return TEMPLATE_CATALOG.filter((entry) => {
@@ -234,33 +436,20 @@ export default function PredefinedPage() {
         {activeTab === "reference" && (<>
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Reference Catalog</h2>
 
+        {/* Spec Editor Modal */}
+        {editingTemplate && (
+          <SpecEditorModal templateId={editingTemplate} info={SAMPLE_INFO} onClose={() => setEditingTemplate(null)} />
+        )}
+
         {/* Templates */}
         <section className="mb-12">
           <div className="flex items-center justify-between mb-1">
             <h2 className="text-xl font-bold text-gray-800">Templates ({TEMPLATES.length})</h2>
-            <button
-              onClick={() => {
-                const map: Record<string, string[]> = {};
-                TEMPLATES.forEach((t) => {
-                  map[t.id] = logoPositions[t.id] ? [logoPositions[t.id]] : ["top-right"];
-                });
-                const code = TEMPLATES.map((t) => {
-                  const pos = logoPositions[t.id] || "top-right";
-                  return `  "${t.id}": ["${pos}"],`;
-                }).join("\n");
-                navigator.clipboard.writeText(`{\n${code}\n}`);
-                alert("Copied safeLogoPositions map to clipboard!");
-              }}
-              className="text-xs px-3 py-1.5 rounded-lg bg-[#0e0f0c] text-[#9fe870] hover:bg-[#0e0f0c]/80 transition-colors font-medium"
-            >
-              Export Logo Positions
-            </button>
           </div>
-          <p className="text-sm text-gray-500 mb-4">Click logo position buttons to adjust. Changes saved to localStorage.</p>
+          <p className="text-sm text-gray-500 mb-4">Click any card to edit its spec JSON</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {TEMPLATES.map((t, i) => {
               const theme = COLOR_THEMES[i % COLOR_THEMES.length];
-              const currentPlacement = (logoPositions[t.id] || "top-right") as LogoPlacement;
               const design: CardDesign = {
                 id: `preview-${t.id}`,
                 templateId: t.id as TemplateId,
@@ -273,34 +462,17 @@ export default function PredefinedPage() {
                 borderRadius: "medium",
                 pattern: { id: "none", opacity: 0.07, color: theme.colors.accent, placement: "full" },
                 backgroundEffect: { type: "none", color: theme.colors.accent, opacity: 0.04, angle: 135 },
-                logo: { id: "circle-letter", placement: currentPlacement, size: "medium" },
+                logo: { id: "none", placement: "top-right", size: "medium" },
                 border: { sides: "none", width: 0, color: theme.colors.accent },
               };
               return (
-                <div key={t.id} className="flex flex-col items-center gap-2">
-                  <BusinessCard design={design} info={SAMPLE_INFO} size="small" />
+                <div key={t.id} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => setEditingTemplate(t.id)}>
+                  <div className="group-hover:ring-2 group-hover:ring-[#9fe870] group-hover:ring-offset-1 rounded-lg transition-all">
+                    <BusinessCard design={design} info={SAMPLE_INFO} size="small" />
+                  </div>
                   <div className="text-center">
                     <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded text-[#0e0f0c] font-mono">{t.id}</code>
                     <p className="text-xs text-gray-500 mt-0.5">{t.bestFor}</p>
-                  </div>
-                  <div className="flex flex-wrap justify-center gap-1">
-                    {ALL_LOGO_PLACEMENTS.map((pos) => (
-                      <button
-                        key={pos}
-                        onClick={() => setLogoPositions((prev) => {
-                          const next = { ...prev, [t.id]: pos };
-                          localStorage.setItem("bcard-logo-positions", JSON.stringify(next));
-                          return next;
-                        })}
-                        className={`text-[9px] px-1.5 py-0.5 rounded transition-colors ${
-                          currentPlacement === pos
-                            ? "bg-[#0e0f0c] text-[#9fe870]"
-                            : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                        }`}
-                      >
-                        {pos}
-                      </button>
-                    ))}
                   </div>
                 </div>
               );

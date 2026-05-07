@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useWizardStore } from "@/lib/store";
-import { generateColorVariations } from "@/lib/designs";
+import { generateColorVariations, generateFallbackDesigns } from "@/lib/designs";
 import { recommendDesignsApp2 } from "@/lib/ollama-client";
 import BusinessCard from "@/components/BusinessCard";
 import { CardBuilderModal } from "@/components/CardBuilder";
@@ -95,11 +95,21 @@ export default function DesignPickerStep() {
           if (isLast) setIsGenerating(false);
         },
         onError: (waveIdx) => {
-          console.warn(`[DesignPicker] Redesign wave ${waveIdx} failed; keeping what we have`);
+          console.warn(`[DesignPicker] Redesign wave ${waveIdx} failed; padding with fallback`);
+          const need = Math.max(0, 8 - newDesigns.length);
+          if (need > 0) {
+            const fallback = generateFallbackDesigns(need);
+            newDesigns = [...newDesigns, ...fallback];
+            useWizardStore.getState().setDesigns([...newDesigns, ...originals]);
+            setRedesignProgress(newDesigns.length);
+          }
           setIsGenerating(false);
         },
       });
     } catch {
+      const fallback = generateFallbackDesigns(8);
+      useWizardStore.getState().setDesigns([...fallback, ...originals]);
+      setRedesignProgress(fallback.length);
       setIsGenerating(false);
     }
   };
@@ -231,7 +241,7 @@ export default function DesignPickerStep() {
 
         {/* Right panel — controls (replaced with a loading takeover while generating) */}
         <div
-          className="w-[30%] shrink-0 flex flex-col animate-fade-in bg-[#0e0f0c] rounded-2xl overflow-hidden"
+          className="w-[30%] shrink-0 flex flex-col animate-fade-in bg-[#0e0f0c] rounded-2xl overflow-y-auto"
         >
           {isBusy ? (
             <div className="flex-1 flex flex-col items-center justify-center gap-4 px-6 py-8 text-center">

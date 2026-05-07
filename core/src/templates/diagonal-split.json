@@ -2,18 +2,123 @@
   "id": "diagonal-split",
   "name": "Diagonal Split",
   "description": "A diagonal triangular region in the top-left holds the name; the bottom-right holds the contacts.",
-  "card": { "width": 350, "height": 200 },
+  "card": {
+    "width": 350,
+    "height": 200
+  },
   "background": "palette.background",
   "elements": [
-    { "id": "triangle", "type": "shape", "shape": "polygon", "x": 0, "y": 0,
-      "points": [ { "x": 0, "y": 0 }, { "x": 350, "y": 0 }, { "x": 0, "y": 200 } ],
-      "fill": "palette.backgroundAlt" },
-    { "id": "name",    "type": "text", "x": 20, "y": 22,  "source": "cardInfo.name",    "fontSize": "heading", "fontWeight": "bold",   "fontFamily": "design.font", "color": "palette.onAlt" },
-    { "id": "title",   "type": "text", "x": 20, "y": 44,  "source": "cardInfo.title",   "fontSize": "body",                            "fontFamily": "design.font", "color": "palette.accent" },
-    { "id": "company", "type": "text", "x": 20, "y": 60,  "source": "cardInfo.company", "fontSize": "body",    "fontWeight": "medium", "fontFamily": "design.font", "color": "palette.onAlt" },
-    { "id": "tagline", "type": "text", "x": 330, "y": 130, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic", "fontFamily": "design.font", "color": "palette.text", "alignment": "right", "hideIfEmpty": true },
-    { "id": "email",   "type": "text", "x": 330, "y": 150, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right" },
-    { "id": "phone",   "type": "text", "x": 330, "y": 162, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right" },
-    { "id": "website", "type": "text", "x": 330, "y": 174, "source": "cardInfo.website", "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text", "alignment": "right", "hideIfEmpty": true }
+    {
+      "id": "triangle",
+      "type": "shape",
+      "shape": "polygon",
+      "x": 0,
+      "y": 0,
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 350,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 200
+        }
+      ],
+      "fill": "palette.backgroundAlt"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 22,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 20,
+      "y": 44,
+      "source": "cardInfo.title",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.accent"
+    },
+    {
+      "id": "company",
+      "type": "text",
+      "x": 20,
+      "y": 60,
+      "source": "cardInfo.company",
+      "fontSize": "body",
+      "fontWeight": "medium",
+      "fontFamily": "design.font",
+      "color": "palette.onAlt"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 330,
+      "y": 130,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 330,
+      "y": 150,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 330,
+      "y": 162,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right"
+    },
+    {
+      "id": "website",
+      "type": "text",
+      "x": 330,
+      "y": 174,
+      "source": "cardInfo.website",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "alignment": "right",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "x": 290,
+      "y": 50,
+      "width": 60,
+      "height": 24,
+      "source": "cardInfo.customLogoUrl",
+      "fit": "contain",
+      "hideIfEmpty": true
+    }
   ]
 }

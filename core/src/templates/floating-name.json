@@ -2,15 +2,99 @@
   "id": "floating-name",
   "name": "Floating Name",
   "description": "The name appears as a giant faded watermark behind the actual content, which sits anchored to the bottom of the card.",
-  "card": { "width": 350, "height": 200 },
+  "card": {
+    "width": 350,
+    "height": 200
+  },
   "background": "palette.background",
   "elements": [
-    { "id": "watermark",   "type": "text", "x": 175, "y": 80,  "source": "cardInfo.name", "fontSize": 56, "fontWeight": "bold", "fontFamily": "design.font", "textTransform": "uppercase", "color": "palette.primary", "opacity": 0.05, "alignment": "center" },
-    { "id": "name",        "type": "text", "x": 20, "y": 110, "source": "cardInfo.name", "fontSize": "heading", "fontWeight": "bold", "fontFamily": "design.font", "color": "palette.primary" },
-    { "id": "title-line",  "type": "text", "x": 20, "y": 132, "template": "{title} · {company}", "fontSize": "body", "fontFamily": "design.font", "color": "palette.secondary" },
-    { "id": "tagline",     "type": "text", "x": 20, "y": 146, "source": "cardInfo.tagline", "fontSize": "caption", "fontStyle": "italic", "fontFamily": "design.font", "color": "palette.text", "hideIfEmpty": true },
-    { "id": "divider",     "type": "shape", "shape": "rect", "x": 20, "y": 156, "width": 32, "height": 1, "fill": "palette.accent" },
-    { "id": "email",       "type": "text", "x": 20, "y": 164, "source": "cardInfo.email",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" },
-    { "id": "phone",       "type": "text", "x": 20, "y": 176, "source": "cardInfo.phone",   "fontSize": "caption", "fontFamily": "design.font", "color": "palette.text" }
+    {
+      "id": "watermark",
+      "type": "text",
+      "x": 175,
+      "y": 80,
+      "source": "cardInfo.name",
+      "fontSize": 56,
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "textTransform": "uppercase",
+      "color": "palette.primary",
+      "opacity": 0.05,
+      "alignment": "center"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "x": 20,
+      "y": 110,
+      "source": "cardInfo.name",
+      "fontSize": "heading",
+      "fontWeight": "bold",
+      "fontFamily": "design.font",
+      "color": "palette.primary"
+    },
+    {
+      "id": "title-line",
+      "type": "text",
+      "x": 20,
+      "y": 132,
+      "template": "{title} · {company}",
+      "fontSize": "body",
+      "fontFamily": "design.font",
+      "color": "palette.secondary"
+    },
+    {
+      "id": "tagline",
+      "type": "text",
+      "x": 20,
+      "y": 146,
+      "source": "cardInfo.tagline",
+      "fontSize": "caption",
+      "fontStyle": "italic",
+      "fontFamily": "design.font",
+      "color": "palette.text",
+      "hideIfEmpty": true
+    },
+    {
+      "id": "divider",
+      "type": "shape",
+      "shape": "rect",
+      "x": 20,
+      "y": 156,
+      "width": 32,
+      "height": 1,
+      "fill": "palette.accent"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "x": 20,
+      "y": 164,
+      "source": "cardInfo.email",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "x": 20,
+      "y": 176,
+      "source": "cardInfo.phone",
+      "fontSize": "caption",
+      "fontFamily": "design.font",
+      "color": "palette.text"
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "x": 290,
+      "y": 12,
+      "width": 60,
+      "height": 24,
+      "source": "cardInfo.customLogoUrl",
+      "fit": "contain",
+      "hideIfEmpty": true
+    }
   ]
 }

@@ -92,65 +92,64 @@ interface LayoutMeta {
   density: DensityTag;
   font: CardDesign["font"];
   textAlign: CardDesign["textAlign"];
-  safeLogoPositions: CardDesign["logo"]["placement"][];
 }
 
 const LAYOUTS: LayoutMeta[] = [
   // ── Carryover (26) ─────────────────────────────────────────────────
-  { id: "minimal-clean",      industry: ["tech", "consulting", "creative-agency"],         density: "airy",     font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "split-sidebar",      industry: ["creative-agency", "real-estate", "construction"], density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "centered-classic",   industry: ["legal", "finance", "consulting"],                density: "balanced", font: "serif", textAlign: "center", safeLogoPositions: ["top-left", "top-right", "bottom-left", "bottom-right"] },
-  { id: "modern-left",        industry: ["tech", "consulting", "creative-agency"],         density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "elegant-serif",      industry: ["legal", "beauty-wellness", "real-estate"],       density: "airy",     font: "serif", textAlign: "center", safeLogoPositions: ["top-left", "top-right", "bottom-left", "bottom-right"] },
-  { id: "stacked-bold",       industry: ["entertainment", "creative-agency", "consulting"], density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "japanese-minimal",   industry: ["photography", "creative-agency", "beauty-wellness"], density: "airy", font: "sans", textAlign: "right",  safeLogoPositions: ["top-left", "top-center", "bottom-left"] },
-  { id: "top-accent",         industry: ["healthcare", "education", "nonprofit"],          density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "right-sidebar",      industry: ["creative-agency", "retail", "beauty-wellness"],  density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-left", "bottom-left"] },
-  { id: "vertical-split",     industry: ["consulting", "construction", "real-estate"],     density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "two-tone-split",     industry: ["tech", "creative-agency", "entertainment"],      density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "magazine-editorial", industry: ["creative-agency", "photography", "entertainment"], density: "airy",   font: "serif", textAlign: "left",   safeLogoPositions: ["top-left", "top-right"] },
-  { id: "offset-minimal",     industry: ["creative-agency", "photography", "real-estate"], density: "airy",     font: "sans",  textAlign: "left",   safeLogoPositions: ["top-left", "bottom-right"] },
-  { id: "asymmetric-blocks",  industry: ["creative-agency", "retail", "tech"],             density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["bottom-right"] },
-  { id: "corner-frame",       industry: ["photography", "beauty-wellness", "creative-agency"], density: "airy", font: "serif", textAlign: "center", safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "retro-vintage",      industry: ["food-dining", "retail", "entertainment"],        density: "balanced", font: "serif", textAlign: "center", safeLogoPositions: ["top-left", "top-right", "bottom-left", "bottom-right"] },
-  { id: "three-column",       industry: ["consulting", "finance", "healthcare"],           density: "compact",  font: "sans",  textAlign: "left",   safeLogoPositions: ["top-center", "bottom-center"] },
-  { id: "edge-info",          industry: ["photography", "creative-agency", "entertainment"], density: "airy",   font: "sans",  textAlign: "left",   safeLogoPositions: ["center", "top-center"] },
-  { id: "dark-gradient",      industry: ["tech", "entertainment", "photography"],          density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right"] },
-  { id: "diagonal-accent",    industry: ["entertainment", "retail", "food-dining"],        density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["bottom-right", "bottom-left"] },
-  { id: "diagonal-split",     industry: ["creative-agency", "tech", "entertainment"],      density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["bottom-left"] },
-  { id: "mono-tech",          industry: ["tech", "construction", "consulting"],            density: "compact",  font: "mono",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "vertical-text",      industry: ["creative-agency", "photography", "real-estate"], density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "brutalist",          industry: ["entertainment", "creative-agency", "tech"],      density: "compact",  font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "floating-name",      industry: ["entertainment", "creative-agency", "photography"], density: "airy",   font: "sans",  textAlign: "left",   safeLogoPositions: ["top-left", "top-right"] },
-  { id: "wave-divide",        industry: ["beauty-wellness", "food-dining", "nonprofit"],   density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["bottom-right", "bottom-left"] },
+  { id: "minimal-clean",      industry: ["tech", "consulting", "creative-agency"],         density: "airy",     font: "sans",  textAlign: "left" },
+  { id: "split-sidebar",      industry: ["creative-agency", "real-estate", "construction"], density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "centered-classic",   industry: ["legal", "finance", "consulting"],                density: "balanced", font: "serif", textAlign: "center" },
+  { id: "modern-left",        industry: ["tech", "consulting", "creative-agency"],         density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "elegant-serif",      industry: ["legal", "beauty-wellness", "real-estate"],       density: "airy",     font: "serif", textAlign: "center" },
+  { id: "stacked-bold",       industry: ["entertainment", "creative-agency", "consulting"], density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "japanese-minimal",   industry: ["photography", "creative-agency", "beauty-wellness"], density: "airy", font: "sans", textAlign: "right" },
+  { id: "top-accent",         industry: ["healthcare", "education", "nonprofit"],          density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "right-sidebar",      industry: ["creative-agency", "retail", "beauty-wellness"],  density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "vertical-split",     industry: ["consulting", "construction", "real-estate"],     density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "two-tone-split",     industry: ["tech", "creative-agency", "entertainment"],      density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "magazine-editorial", industry: ["creative-agency", "photography", "entertainment"], density: "airy",   font: "serif", textAlign: "left" },
+  { id: "offset-minimal",     industry: ["creative-agency", "photography", "real-estate"], density: "airy",     font: "sans",  textAlign: "left" },
+  { id: "asymmetric-blocks",  industry: ["creative-agency", "retail", "tech"],             density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "corner-frame",       industry: ["photography", "beauty-wellness", "creative-agency"], density: "airy", font: "serif", textAlign: "center" },
+  { id: "retro-vintage",      industry: ["food-dining", "retail", "entertainment"],        density: "balanced", font: "serif", textAlign: "center" },
+  { id: "three-column",       industry: ["consulting", "finance", "healthcare"],           density: "compact",  font: "sans",  textAlign: "left" },
+  { id: "edge-info",          industry: ["photography", "creative-agency", "entertainment"], density: "airy",   font: "sans",  textAlign: "left" },
+  { id: "dark-gradient",      industry: ["tech", "entertainment", "photography"],          density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "diagonal-accent",    industry: ["entertainment", "retail", "food-dining"],        density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "diagonal-split",     industry: ["creative-agency", "tech", "entertainment"],      density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "mono-tech",          industry: ["tech", "construction", "consulting"],            density: "compact",  font: "mono",  textAlign: "left" },
+  { id: "vertical-text",      industry: ["creative-agency", "photography", "real-estate"], density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "brutalist",          industry: ["entertainment", "creative-agency", "tech"],      density: "compact",  font: "sans",  textAlign: "left" },
+  { id: "floating-name",      industry: ["entertainment", "creative-agency", "photography"], density: "airy",   font: "sans",  textAlign: "left" },
+  { id: "wave-divide",        industry: ["beauty-wellness", "food-dining", "nonprofit"],   density: "balanced", font: "sans",  textAlign: "left" },
 
   // ── New (26) ────────────────────────────────────────────────────────
-  { id: "editorial-type",     industry: ["creative-agency", "photography", "tech"],         density: "airy",     font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "bold-accent",        industry: ["entertainment", "creative-agency", "tech"],       density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right"] },
-  { id: "swiss-grid",         industry: ["consulting", "finance", "legal", "tech"],         density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "glyph-mark",         industry: ["creative-agency", "consulting", "construction", "legal", "finance"],  density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "brutalist-grid",     industry: ["creative-agency", "entertainment"],               density: "compact",  font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "soft-surface",       industry: ["beauty-wellness", "photography", "retail", "food-dining"], density: "airy", font: "sans", textAlign: "left", safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "diagonal-modern",    industry: ["creative-agency", "entertainment", "tech"],       density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["bottom-right", "top-right"] },
-  { id: "ribbon-minimal",     industry: ["beauty-wellness", "photography", "legal", "food-dining", "real-estate", "nonprofit"], density: "airy", font: "serif", textAlign: "center", safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "zen-asymmetric",     industry: ["beauty-wellness", "photography", "creative-agency"], density: "airy", font: "sans",  textAlign: "right",  safeLogoPositions: ["top-left", "top-center"] },
-  { id: "mono-terminal",      industry: ["tech"],                                            density: "balanced", font: "mono",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "wide-band",          industry: ["finance", "consulting", "construction", "healthcare", "legal"], density: "balanced", font: "sans", textAlign: "left", safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "two-column-clean",   industry: ["consulting", "legal", "finance"],                 density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "oversized-initial",  industry: ["creative-agency", "entertainment", "retail"],    density: "airy",     font: "sans",  textAlign: "left",   safeLogoPositions: ["bottom-right", "top-right"] },
-  { id: "top-heavy",          industry: ["creative-agency", "photography", "entertainment", "beauty-wellness"], density: "airy", font: "sans", textAlign: "left", safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "l-frame",            industry: ["construction", "consulting", "tech"],             density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["bottom-right", "bottom-left"] },
-  { id: "inset-elegant",      industry: ["legal", "real-estate", "beauty-wellness"],        density: "balanced", font: "serif", textAlign: "center", safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "horizontal-stack",   industry: ["tech", "consulting", "finance", "healthcare"],     density: "compact",  font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "circle-badge",       industry: ["legal", "consulting", "finance"],                 density: "balanced", font: "serif", textAlign: "center", safeLogoPositions: ["bottom-left", "bottom-right"] },
-  { id: "right-accent-bar",   industry: ["tech", "consulting", "healthcare"],               density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-left", "bottom-left"] },
-  { id: "stacked-display",    industry: ["entertainment", "creative-agency", "retail"],    density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "orbit",              industry: ["tech", "creative-agency", "entertainment", "retail"], density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["bottom-left", "bottom-right"] },
-  { id: "twin-circles",       industry: ["creative-agency", "beauty-wellness", "education"],density: "airy",     font: "sans",  textAlign: "left",   safeLogoPositions: ["top-left", "bottom-right"] },
-  { id: "corner-block",       industry: ["construction", "creative-agency", "tech"],        density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-left", "top-right"] },
-  { id: "half-moon",          industry: ["beauty-wellness", "photography", "food-dining", "real-estate"], density: "airy", font: "sans", textAlign: "left", safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "stacked-bars",       industry: ["entertainment", "tech", "creative-agency"],       density: "balanced", font: "sans",  textAlign: "left",   safeLogoPositions: ["top-right", "bottom-right"] },
-  { id: "diamond-accent",     industry: ["creative-agency", "entertainment", "retail", "photography"], density: "balanced", font: "sans", textAlign: "left", safeLogoPositions: ["top-left", "bottom-left"] },
+  { id: "editorial-type",     industry: ["creative-agency", "photography", "tech"],         density: "airy",     font: "sans",  textAlign: "left" },
+  { id: "bold-accent",        industry: ["entertainment", "creative-agency", "tech"],       density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "swiss-grid",         industry: ["consulting", "finance", "legal", "tech"],         density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "glyph-mark",         industry: ["creative-agency", "consulting", "construction", "legal", "finance"],  density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "brutalist-grid",     industry: ["creative-agency", "entertainment"],               density: "compact",  font: "sans",  textAlign: "left" },
+  { id: "soft-surface",       industry: ["beauty-wellness", "photography", "retail", "food-dining"], density: "airy", font: "sans", textAlign: "left" },
+  { id: "diagonal-modern",    industry: ["creative-agency", "entertainment", "tech"],       density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "ribbon-minimal",     industry: ["beauty-wellness", "photography", "legal", "food-dining", "real-estate", "nonprofit"], density: "airy", font: "serif", textAlign: "center" },
+  { id: "zen-asymmetric",     industry: ["beauty-wellness", "photography", "creative-agency"], density: "airy", font: "sans",  textAlign: "right" },
+  { id: "mono-terminal",      industry: ["tech"],                                            density: "balanced", font: "mono",  textAlign: "left" },
+  { id: "wide-band",          industry: ["finance", "consulting", "construction", "healthcare", "legal"], density: "balanced", font: "sans", textAlign: "left" },
+  { id: "two-column-clean",   industry: ["consulting", "legal", "finance"],                 density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "oversized-initial",  industry: ["creative-agency", "entertainment", "retail"],    density: "airy",     font: "sans",  textAlign: "left" },
+  { id: "top-heavy",          industry: ["creative-agency", "photography", "entertainment", "beauty-wellness"], density: "airy", font: "sans", textAlign: "left" },
+  { id: "l-frame",            industry: ["construction", "consulting", "tech"],             density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "inset-elegant",      industry: ["legal", "real-estate", "beauty-wellness"],        density: "balanced", font: "serif", textAlign: "center" },
+  { id: "horizontal-stack",   industry: ["tech", "consulting", "finance", "healthcare"],     density: "compact",  font: "sans",  textAlign: "left" },
+  { id: "circle-badge",       industry: ["legal", "consulting", "finance"],                 density: "balanced", font: "serif", textAlign: "center" },
+  { id: "right-accent-bar",   industry: ["tech", "consulting", "healthcare"],               density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "stacked-display",    industry: ["entertainment", "creative-agency", "retail"],    density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "orbit",              industry: ["tech", "creative-agency", "entertainment", "retail"], density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "twin-circles",       industry: ["creative-agency", "beauty-wellness", "education"],density: "airy",     font: "sans",  textAlign: "left" },
+  { id: "corner-block",       industry: ["construction", "creative-agency", "tech"],        density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "half-moon",          industry: ["beauty-wellness", "photography", "food-dining", "real-estate"], density: "airy", font: "sans", textAlign: "left" },
+  { id: "stacked-bars",       industry: ["entertainment", "tech", "creative-agency"],       density: "balanced", font: "sans",  textAlign: "left" },
+  { id: "diamond-accent",     industry: ["creative-agency", "entertainment", "retail", "photography"], density: "balanced", font: "sans", textAlign: "left" },
 ];
 
 // ── Pattern pool per style combo ──────────────────────────────────────
@@ -215,7 +214,9 @@ function generateCatalog(): CatalogEntry[] {
         const primaryIndustry = layout.industry[0];
         const logoPool = LOGO_POOL_BY_INDUSTRY[primaryIndustry] || ["circle-letter"];
         const logoId = logoPool[Math.floor(rand() * logoPool.length)];
-        const logoPlacement = layout.safeLogoPositions[Math.floor(rand() * layout.safeLogoPositions.length)];
+        // Logo placement is now defined in the template spec's image element;
+        // this field is kept for backward compat but ignored by the renderer.
+        const logoPlacement = "top-right" as CardDesign["logo"]["placement"];
 
         // Border
         const borderWidth = style.hasBorder ? (1 + Math.floor(rand() * 3)) : 0;

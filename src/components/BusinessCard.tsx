@@ -20,6 +20,7 @@ interface BusinessCardProps {
   editMode?: boolean;
   selectedElement?: EditableElementId | null;
   onSelectElement?: (id: EditableElementId) => void;
+  specOverride?: unknown;
   ref?: React.Ref<HTMLDivElement>;
 }
 
@@ -236,7 +237,7 @@ function patternStyle(placement: PatternPlacement): React.CSSProperties {
   }
 }
 
-export default function BusinessCard({ design: rawDesign, info, size = "medium", onClick, selected = false, editMode = false, selectedElement = null, onSelectElement, ref }: BusinessCardProps) {
+export default function BusinessCard({ design: rawDesign, info, size = "medium", onClick, selected = false, editMode = false, selectedElement = null, onSelectElement, specOverride, ref }: BusinessCardProps) {
   const design = norm(rawDesign);
   const { templateId, font } = design;
   const f = fontMap[font];
@@ -311,14 +312,18 @@ export default function BusinessCard({ design: rawDesign, info, size = "medium",
   // ── Spec lookup (replaces the per-template switch) ───────────────────
   // Falls back to minimal-clean if the templateId is one of the legacy ids
   // (card-border, logo-centered, etc.) that don't have specs of their own.
-  const spec = getTemplateSpec(templateId) || getTemplateSpec("minimal-clean");
+  const spec = (specOverride as ReturnType<typeof getTemplateSpec>) || getTemplateSpec(templateId) || getTemplateSpec("minimal-clean");
 
   // Design modifiers passed to the spec renderer.
+  // Hide the spec's logo image element — the overlay renders it with edge-aware positioning.
+  const specHasLogoEl = spec?.elements.some((e: { id: string; type: string }) => e.id === "logo" && e.type === "image");
   const specDesign = {
     font,
     fontSizes: design.fontSizes,
     elementOverrides: eo,
-    hiddenFields: design.hiddenFields,
+    hiddenFields: specHasLogoEl
+      ? [...(design.hiddenFields ?? []), "logo"]
+      : design.hiddenFields,
   };
 
   return (
@@ -364,25 +369,40 @@ export default function BusinessCard({ design: rawDesign, info, size = "medium",
         />
       )}
 
-      {/* Logo — rendered from the unified LogoElement shape (Task #10) */}
+      {/* Logo overlay — renders both source and icon logos with edge-aware positioning */}
       {(() => {
         const le = normalizeLogo(design, info);
         if (!le || le.visible === false || hidden.has("logo")) return null;
 
+        const specLogoEl = spec?.elements.find((e: { id: string; type: string }) => e.id === "logo" && e.type === "image");
+
         const scale = szDims.w / 350;
         const logoOv: ElementStyle = eo["logo"] ?? {};
 
-        // The +/- size buttons in the wizard write to elementOverrides["logo"].fontSize
-        // — we treat that as the new base size for both width (×3 for source) and height.
         const sizeOverride = logoOv.fontSize;
-        const baseH = sizeOverride ?? le.height;
+        const baseH = sizeOverride ?? (specLogoEl ? specLogoEl.height : le.height);
         const isSource = !!le.source;
         const elemW = isSource ? baseH * 3 : baseH;
         const elemH = baseH;
 
-        // Apply any elementOverrides offset (arrow keys / position pad — Shift / Cmd scaled)
-        const x = le.x + (logoOv.offsetX ?? 0);
-        const y = le.y + (logoOv.offsetY ?? 0);
+        // Calculate position from edge: 10px gap from border/edge
+        const gap = 10;
+        const bw = (bdr.sides !== "none" && bdr.width > 0) ? bdr.width : 0;
+        let x: number, y: number;
+
+        if (specLogoEl) {
+          // Determine corner from spec position
+          const isRight = specLogoEl.x >= 175;
+          const isBottom = specLogoEl.y >= 100;
+          x = isRight ? (350 - bw - gap - elemW) : (bw + gap);
+          y = isBottom ? (200 - bw - gap - elemH) : (bw + gap);
+        } else {
+          x = le.x;
+          y = le.y;
+        }
+
+        x += (logoOv.offsetX ?? 0);
+        y += (logoOv.offsetY ?? 0);
 
         const logoBaseStyle: React.CSSProperties = {
           position: "absolute",

@@ -29,7 +29,7 @@ import {
 } from "@/lib/template-catalog";
 
 // ── Config ──────────────────────────────────────────────────────────────
-const OLLAMA_BASE_URL = "http://hari-3035-macstudio.csez.zohocorpin.com:11434";
+const OLLAMA_BASE_URL = "https://gadgets-push.zohocorporation.com/llm";
 const OLLAMA_MODEL = "qwen3.6:35b";
 
 // Pattern ids the LLM is allowed to pick (excludes "none" — that's a
@@ -57,7 +57,7 @@ function clamp(v: number, min: number, max: number): number {
 // ── Raw Ollama calls ────────────────────────────────────────────────────
 
 /** Single-prompt fetch (App4). */
-async function queryOllama(
+export async function queryOllama(
   prompt: string,
   opts?: { maxTokens?: number; temperature?: number },
 ): Promise<string> {

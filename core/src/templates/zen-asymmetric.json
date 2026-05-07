@@ -90,6 +90,17 @@
       "color": "palette.text",
       "alignment": "right",
       "hideIfEmpty": true
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "x": 8,
+      "y": 10,
+      "width": 60,
+      "height": 24,
+      "source": "cardInfo.customLogoUrl",
+      "fit": "contain",
+      "hideIfEmpty": true
     }
   ]
 }
